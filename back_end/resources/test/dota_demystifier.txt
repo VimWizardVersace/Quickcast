@@ -1,0 +1,153 @@
+De-Mystifying the Dota 2 GetLiveLeagueGames API call.
+
+result
+  -- game
+    ** players
+      -- 0 = radiant
+      -- 1 = dire
+      -- 2 = broadcaster
+      -- 4 = unassigned (?)
+
+    ** radiant_team
+      -- complete: whether or not the team is using stand-ins (subs)
+    ** dire_team
+
+    ** series_id [deprecated/not in use]
+	  -- what?
+
+    ** game_number  [deprecated/not in use]
+      -- what again? This must be the total amt of games played, 
+        but it doesn't seem like it's actually being updated.
+
+    ** radiant_series_wins && dire_series_wins
+      -- actually useful.
+
+    ** series_type
+      -- 1 = best of 3
+      -- 0 = best of 1   
+
+    ** league_series_id [deprecated/not in use]
+      -- hmmm... Must be functionality nobody is using...
+
+    ** league_game_id [deprecated/not in use]
+      -- same thing here.
+
+    ** league_tier
+      -- 3 is "premium" tournaments.
+        ** the ones we're interested in will be tier 3.
+      -- 2 is professional
+      -- 1 may be amateur?
+
+[NOTE: SOME OF THIS STUFF IS FAR TOO GRANULAR FOR A MOBILE APP. I'll list what we want.]
+    ** scoreboard
+      -- duration
+        ** time in game time. If the game is still in pick/ban, duration will be 0.
+      -- roshan_respawn_timer
+        ** self-explanatory. 0 if alive.
+      -- team (radiant/dire)
+        ** score
+          -- Kill score.
+        ** tower state (see below)
+        ** barracks state (see below)
+        ** picks & bans
+          -- in-order sorting of picks and bans.
+        ** players 
+          -- account_id > use this to match with actual names (not bad alt names)
+          -- hero_id > see https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=7FC9CAB8C757ECC0CD2B0D9C272B31A5&language=en_us
+          -- Kills, deaths, assists
+          -- networth, level
+          -- respawn timer (maybe too granular...)
+          -- ultimate state
+            ** 0 = not learned
+            ** 1 = off cooldown, enough mana.
+            ** 2 = off cooldown, not enough mana.
+            ** 3 = on cooldown.
+        ** abilities
+          -- an array of the abilities of each player
+          -- ability_id = the identifier for an ability
+          -- level: what level the ability is
+        
+
+
+
+
+
+
+=======================================
+|   IMPORTANT TOWER & BARRACKS STATE  |
+=======================================
+tower state:
+
+A 16-bit integer, 11 bits are used.
+   ┌─┬─┬─┬─┬─────────────────────── Not used.
+   │ │ │ │ │ ┌───────────────────── Ancient Top
+   │ │ │ │ │ │ ┌─────────────────── Ancient Bottom
+   │ │ │ │ │ │ │ ┌───────────────── Bottom Tier 3
+   │ │ │ │ │ │ │ │ ┌─────────────── Bottom Tier 2
+   │ │ │ │ │ │ │ │ │ ┌───────────── Bottom Tier 1
+   │ │ │ │ │ │ │ │ │ │ ┌─────────── Middle Tier 3
+   │ │ │ │ │ │ │ │ │ │ │ ┌───────── Middle Tier 2
+   │ │ │ │ │ │ │ │ │ │ │ │ ┌─────── Middle Tier 1
+   │ │ │ │ │ │ │ │ │ │ │ │ │ ┌───── Top Tier 3
+   │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─── Top Tier 2
+   │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ┌─ Top Tier 1
+   │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │
+   0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+So let's look at the game Alliance vs Stark in our sampleDotaRequest.json file:
+
+
+radiant:
+	towerstate: 2038
+	11111110110
+dire:
+	towerstate: 1983
+	11110111111
+
+
+What does our game look like?
+...
+..
+.
+...
+..
+.
++-----------------------------------------+
+|       o         o         o     o []    |
+|                                   o     |
+|  +                           o          |
+|                                    o    |
+|                           o             |
+|                       o                 |
+|                                         |
+|  x               +                      |
+|                                    =    |
+|                                         |
+|            x                            |
+|  x                                 =    |
+|       x                                 |
+|  x                                      |
+|  [] x    x           x          x       |
++-----------------------------------------+
+
+Where x is a radiant tower, o is a dire tower,
+
++ is a destroyed radiant tower, and = is a destroyed dire tower.
+
+See the jpg stored in this directory if you're having trouble deciphering that.
+
+
+BARRACKS STATUS:
+
+an 8-bit unsigned integer.
+
+   ┌─┬───────────── Not used.
+   │ │ ┌─────────── Bottom Ranged
+   │ │ │ ┌───────── Bottom Melee
+   │ │ │ │ ┌─────── Middle Ranged
+   │ │ │ │ │ ┌───── Middle Melee
+   │ │ │ │ │ │ ┌─── Top Ranged
+   │ │ │ │ │ │ │ ┌─ Top Melee
+   │ │ │ │ │ │ │ │
+   0 0 0 0 0 0 0 0
+
