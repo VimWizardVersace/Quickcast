@@ -20,6 +20,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class HubActivity extends AppCompatActivity
@@ -35,7 +37,6 @@ public class HubActivity extends AppCompatActivity
 	 */
 	private CharSequence mTitle;
 
-	private ListProvider mainListProvider;
 
 
 	@Override
@@ -52,20 +53,16 @@ public class HubActivity extends AppCompatActivity
 				R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 
-		ListView mainListView = (ListView) findViewById(R.id.mainListView);
 
-		// Construct the Provider
-		mainListProvider = new ListProvider(this);
-		mainListView.setAdapter(mainListProvider);
 	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
-		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-				.commit();
+		//FragmentManager fragmentManager = getSupportFragmentManager();
+		//fragmentManager.beginTransaction()
+		//		.replace(R.id.container, OverviewListFragment.newInstance(position + 1))
+		//		.commit();
 	}
 
 	public void onSectionAttached(int number) {
@@ -118,49 +115,54 @@ public class HubActivity extends AppCompatActivity
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void refreshMatchList() {
-		/* MAKE API CALL TO GET_RECENT_MATCHES */
-		mainListProvider.setElements( "{}"/*RESPONSE*/ );
-	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		private static final String ARG_SECTION_NUMBER = "section_number";
+	// /**
+	//  * A placeholder fragment containing a simple view.
+	//  */
+	// public class PlaceholderFragment extends Fragment {
+	// 	/**
+	// 	 * The fragment argument representing the section number for this
+	// 	 * fragment.
+	// 	 */
+	// 	private final String ARG_SECTION_NUMBER = "section_number";
 
-		/**
-		 * Returns a new instance of this fragment for the given section
-		 * number.
-		 */
-		public static PlaceholderFragment newInstance(int sectionNumber) {
-			PlaceholderFragment fragment = new PlaceholderFragment();
-			Bundle args = new Bundle();
-			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-			fragment.setArguments(args);
-			return fragment;
-		}
+	// 	private ListProvider mainListProvider;
 
-		public PlaceholderFragment() {
-		}
+	// 	/**
+	// 	 * Returns a new instance of this fragment for the given section
+	// 	 * number.
+	// 	 */
+	// 	public PlaceholderFragment newInstance(int sectionNumber) {
+	// 		PlaceholderFragment fragment = new PlaceholderFragment();
+	// 		Bundle args = new Bundle();
+	// 		args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+	// 		fragment.setArguments(args);
+	// 		return fragment;
+	// 	}
 
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-								 Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_hub, container, false);
-			return rootView;
-		}
+	// 	public PlaceholderFragment() {
+	// 	}
 
-		@Override
-		public void onAttach(Activity activity) {
-			super.onAttach(activity);
-			((HubActivity) activity).onSectionAttached(
-					getArguments().getInt(ARG_SECTION_NUMBER));
-		}
-	}
+	// 	@Override
+	// 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	// 							 Bundle savedInstanceState) {
+	// 		View rootView = inflater.inflate(R.layout.fragment_hub, container, false);
+
+
+	// 		return rootView;
+	// 	}
+
+	// 	@Override
+	// 	public void onAttach(Activity activity) {
+	// 		super.onAttach(activity);
+	// 		((HubActivity) activity).onSectionAttached(
+	// 				getArguments().getInt(ARG_SECTION_NUMBER));
+	// 	}
+
+	// 	public void refreshMatchList() throws JSONException {
+	// 		/* MAKE API CALL TO GET_RECENT_MATCHES */
+	// 		mainListProvider.setElements( "{ \"abcdefg\" : { \"start time\" : 1111111, \"sport\" : \"DOTA2\", \"teams\" : [ \"Evil Geniuses\", \"111111\", \"The Losers\", \"222222\"], \"score\" : [99, 0],\"series\" : [ 1, 0, 3]}}"/*RESPONSE*/ );
+	// 	}
+	// }
 
 }

@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,44 +32,6 @@ import java.util.Iterator;
 		...
 	}
  */
-
-public class ListElement {
-	public ListElement(String id, JSONObject details) throws JSONException {
-		matchID = id;
-
-		JSONArray teams = details.getJSONArray("teams");
-		JSONArray scores = details.getJSONArray("score");
-		JSONArray jsonSeries = details.getJSONArray("series");
-
-		sport		= details.getString("sport");
-		timestamp	= details.getInt("start time");
-		endStamp	= details.optInt("end time", -1);
-		series		= new int [3];
-		series[0]	= jsonSeries.getInt(0);
-		series[1]	= jsonSeries.getInt(1);
-		series[2]	= jsonSeries.getInt(2);
-		score1		= scores.getInt(0);
-		score2		= scores.getInt(1);
-		team1		= teams.getString(0);
-		teamID1		= teams.getString(1);
-		team2		= teams.getString(2);
-		teamID2		= teams.getString(3);
-
-	}
-
-	int timestamp;
-	int endStamp;
-	int score1;
-	int score2;
-	int [] series;
-	String matchID;
-	String sport;
-	String team1;
-	String teamID1;
-	String team2;
-	String teamID2;
-
-}
 
 public class ListProvider extends ArrayAdapter<ListElement> {
 	private Context context;
@@ -98,6 +62,23 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 		View element = inflater.inflate(R.layout.main_list_element, parent, false);
 
 		/* View elements to inject */
+		TextView sportLabel = (TextView) element.findViewById(R.id.sport);
+		TextView timeLabel = (TextView) element.findViewById(R.id.sport_timer);
+		TextView team_1Label = (TextView) element.findViewById(R.id.name_uno);
+		TextView team_2Label = (TextView) element.findViewById(R.id.name_dos);
+		TextView score_1Label = (TextView) element.findViewById(R.id.score_uno);
+		TextView score_2Label = (TextView) element.findViewById(R.id.score_dos);
+		//ImageView logo1 = (ImageView) element.findViewById(R.id.logo_uno);
+		//ImageView logo2 = (ImageView) element.findViewById(R.id.logo_dos);
+
+		ListElement elementData = elements.get(position);
+
+		sportLabel.setText(elementData.sport);
+		timeLabel.setText("XX:XX");
+		team_1Label.setText(elementData.team1);
+		team_2Label.setText(elementData.team2);
+		score_1Label.setText(elementData.score1);
+		score_2Label.setText(elementData.score2);
 
 		return element;
 	}
