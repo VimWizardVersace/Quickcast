@@ -27,52 +27,60 @@ def print_all_matches(flask=True):
 				print line
 
 
-def update_scoreboard(json_obj):
+def ingest_recent_matches(json_obj):
 	# make it a dictionary first.  dictionaries are easily converted to json objects
-	scoreboard_json = dict()
+	recent_matches = dict()
 
-	# make an array of internal objects, each representing a match
-	scoreboard_json['matches'] = []
+	# make an array of internal dictionaries, each representing a match
+	recent_matches['matches'] = []
 	for index, match in enumerate(json_obj['result']['games']):
-
-		scoreboard_json['matches'].append(dict())
-		scoreboard_json['matches'][index]['match_id'] = match['match_id']
-
-		scoreboard_json['matches'][index]['tournament'] = None
-
-		scoreboard_json['matches'][index]['teams'] = []
+		
+		match_id = match['match_id']
+		recent_matches[match_id] = {}
+		# add the following attributes to the match object
+		# NOTE: start_time will be negative if the match has not started
+		recent_matches[match_id]["start_time"] = time.time() - match['scoreboard']['duration']
+		recent_matches[match_id]["sport"] = "Dota2"
+		recent_matches[match_id]['teams'] = []
 
 		# check if the API call returned the names of the radiant team, dire team, and their scores,
 		# if not, leave them as unknowns
 		try:
-			scoreboard_json['matches'][index]['teams'].append(match['radiant_team']['team_name'])
+			recent_matches[match_id]['teams'].append(match['radiant_team']['team_name'])
 		except KeyError:
-			scoreboard_json['matches'][index]['teams'].append("Unknown team")
+			recent_matches[match_id]['teams'].append("Unknown radiant team")
 		try:
-			scoreboard_json['matches'][index]['teams'].append(match['dire_team']['team_name'])
+			recent_matches[match_id]['teams'].append(match['dire_team']['team_name'])
 		except KeyError:
-			scoreboard_json['matches'][index]['teams'].append("Unknown team")
+			recent_matches[match_id]['teams'].append("Unknown dire team")
 
 
 		# incomplete
-		scoreboard_json['matches'][index]['match_scores'] = []		
+		recent_matches[match_id]['score'] = []		
 
-		scoreboard_json['matches'][index]['game_scores'] = []
+		recent_matches[match_id]['series'] = []
 		try:
-			scoreboard_json['matches'][index]['game_scores'].append(match['scoreboard']['dire']['score'])
-			scoreboard_json['matches'][index]['game_scores'].append(match['scoreboard']['radiant']['score'])
+			recent_matches[match_id]['score'].append(match['scoreboard']['radiant']['score'])
+			recent_matches[match_id]['score'].append(match['scoreboard']['dire']['score'])
 		except KeyError:
-			scoreboard_json['matches'][index]['game_scores'] = [0,0]
+			recent_matches[match_id]['score'] = [-1,-1]
+
+		try:
+			recent_matches[match_id]["series"].append(match['radiant_series_wins'])
+			recent_matches[match_id]["series"].append(match['dire_series_wins'])
+			recent_matches[match_id]["series"].append(sum(recent_matches[match_id]["series"]))
+		except KeyError:
+			recent_matches[match_id]["series"] = [-1, -1, -1]
 
 	# convert the dictionary to a json and write it to scoreboard.json
 	with open("scoreboard.json", 'w') as scoreboard:
-		s = json.dumps(scoreboard_json, sort_keys=True, indent=4, separators=(',', ": "))
+		s = json.dumps(recent_matches, sort_keys=True, indent=4, separators=(',', ": "))
 		scoreboard.write(s)
 
 
 # wildly incomplete. so far this function only updates scoreboard.json
 def ingest_json_object(json_obj):
-	update_scoreboard(json_obj)
+	ingest_recent_matches(json_obj)
 
 # main is used for testing
 if __name__ == "__main__":
@@ -80,6 +88,6 @@ if __name__ == "__main__":
 	flask_thread.start()
 	while(1):
 		current_games_json = make_dota2_api_call()
-		ingest_json_object(current_games_json)
-		print print_all_matches(True)
+		if current_games_json:
+			ingest_json_object(current_games_json)
 		time.sleep(5)

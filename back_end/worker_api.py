@@ -9,7 +9,7 @@ app.config['UPLOAD_FOLDER'] = '~/Quickcast/back_end'
 def booted():
 	return 'True'
 
-@app.route('/live_games', methods=['POST', 'GET'])
+@app.route('/recent_matches', methods=['POST', 'GET'])
 def live_games():
 	if flask.request.method == 'POST':
 		print "Accessed POST method on /live_games"
