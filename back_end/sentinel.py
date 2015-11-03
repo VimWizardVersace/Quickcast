@@ -1,6 +1,5 @@
 import requests
 import json
-import worker_api
 import time
 from threading import Thread
 
@@ -84,8 +83,6 @@ def ingest_json_object(json_obj):
 
 # main is used for testing
 if __name__ == "__main__":
-	flask_thread = Thread(target=worker_api.run)
-	flask_thread.start()
 	while(1):
 		current_games_json = make_dota2_api_call()
 		if current_games_json:
