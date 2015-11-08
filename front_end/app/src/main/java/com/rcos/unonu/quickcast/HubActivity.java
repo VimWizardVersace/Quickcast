@@ -1,28 +1,13 @@
 package com.rcos.unonu.quickcast;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
 
 public class HubActivity extends AppCompatActivity
 		implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -50,19 +35,35 @@ public class HubActivity extends AppCompatActivity
 
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(
-				R.id.navigation_drawer,
-				(DrawerLayout) findViewById(R.id.drawer_layout));
+                R.id.navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout));
 
 
 	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
+		FragmentManager fragmentManager = getFragmentManager();
+
+        Fragment fragment;
 		// update the main content by replacing fragments
-		//FragmentManager fragmentManager = getSupportFragmentManager();
-		//fragmentManager.beginTransaction()
-		//		.replace(R.id.container, OverviewListFragment.newInstance(position + 1))
-		//		.commit();
+        switch (position) {
+        	case 0:
+				fragment = new OverviewListFragment();
+				break;
+			case 1:
+				fragment = new SettingsFragment();
+				break;
+			case 2:
+				fragment = new AboutFragment();
+				break;
+            default:
+                fragment = new OverviewListFragment();
+		}
+
+		fragmentManager.beginTransaction()
+						.replace(R.id.container, fragment)
+						.commit();
 	}
 
 	public void onSectionAttached(int number) {
@@ -114,55 +115,4 @@ public class HubActivity extends AppCompatActivity
 
 		return super.onOptionsItemSelected(item);
 	}
-
-
-	// /**
-	//  * A placeholder fragment containing a simple view.
-	//  */
-	// public class PlaceholderFragment extends Fragment {
-	// 	/**
-	// 	 * The fragment argument representing the section number for this
-	// 	 * fragment.
-	// 	 */
-	// 	private final String ARG_SECTION_NUMBER = "section_number";
-
-	// 	private ListProvider mainListProvider;
-
-	// 	/**
-	// 	 * Returns a new instance of this fragment for the given section
-	// 	 * number.
-	// 	 */
-	// 	public PlaceholderFragment newInstance(int sectionNumber) {
-	// 		PlaceholderFragment fragment = new PlaceholderFragment();
-	// 		Bundle args = new Bundle();
-	// 		args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-	// 		fragment.setArguments(args);
-	// 		return fragment;
-	// 	}
-
-	// 	public PlaceholderFragment() {
-	// 	}
-
-	// 	@Override
-	// 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	// 							 Bundle savedInstanceState) {
-	// 		View rootView = inflater.inflate(R.layout.fragment_hub, container, false);
-
-
-	// 		return rootView;
-	// 	}
-
-	// 	@Override
-	// 	public void onAttach(Activity activity) {
-	// 		super.onAttach(activity);
-	// 		((HubActivity) activity).onSectionAttached(
-	// 				getArguments().getInt(ARG_SECTION_NUMBER));
-	// 	}
-
-	// 	public void refreshMatchList() throws JSONException {
-	// 		/* MAKE API CALL TO GET_RECENT_MATCHES */
-	// 		mainListProvider.setElements( "{ \"abcdefg\" : { \"start time\" : 1111111, \"sport\" : \"DOTA2\", \"teams\" : [ \"Evil Geniuses\", \"111111\", \"The Losers\", \"222222\"], \"score\" : [99, 0],\"series\" : [ 1, 0, 3]}}"/*RESPONSE*/ );
-	// 	}
-	// }
-
 }

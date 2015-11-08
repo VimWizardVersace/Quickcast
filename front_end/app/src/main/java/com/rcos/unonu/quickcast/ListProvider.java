@@ -1,6 +1,7 @@
 package com.rcos.unonu.quickcast;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,14 +38,15 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 	private Context context;
 	private ArrayList<ListElement> elements;
 
-	public ListProvider(Context context) {
-		super(context, -1);
-		this.elements = new ArrayList<ListElement>();
+	public ListProvider(Context context, ArrayList<ListElement> list) {
+		super(context, -1, list);
+		this.elements = list;
 		this.context = context;
 	}
 
 	public int setElements(String blob) throws JSONException {
-		this.elements = new ArrayList<ListElement>();
+        Log.d(" QUICKCAST!!!!", "heyyyyyo " + this.elements.size());
+		this.elements.clear();
 		JSONObject matches = new JSONObject(blob);
 
 		Iterator<String> ids = matches.keys();
@@ -52,6 +54,9 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 			String id = ids.next();
 			this.elements.add(new ListElement(id, matches.getJSONObject(id)));
 		}
+        this.notifyDataSetChanged();
+
+        Log.d(" QUICKCAST!!!!", "helloooo " + this.elements.size());
 		return this.elements.size();
 	}
 
@@ -77,8 +82,8 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 		timeLabel.setText("XX:XX");
 		team_1Label.setText(elementData.team1);
 		team_2Label.setText(elementData.team2);
-		score_1Label.setText(elementData.score1);
-		score_2Label.setText(elementData.score2);
+		score_1Label.setText(Integer.toString(elementData.score1));
+		score_2Label.setText(Integer.toString(elementData.score2));
 
 		return element;
 	}
