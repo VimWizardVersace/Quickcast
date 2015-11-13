@@ -1,19 +1,11 @@
 package com.rcos.unonu.quickcast;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONArray;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by unonu on 10/25/15.
@@ -33,7 +25,20 @@ import java.util.Iterator;
 	}
  */
 
-public class ListElement {
+public class ListElement implements Parcelable {
+
+	public static int timestamp;
+	public static int endStamp;
+	public static int score1;
+	public static int score2;
+	public static int [] series;
+	public static String matchID;
+	public static String sport;
+	public static String team1;
+	public static String teamID1;
+	public static String team2;
+	public static String teamID2;
+
 	public ListElement(String id, JSONObject details) throws JSONException {
 		matchID = id;
 
@@ -57,16 +62,50 @@ public class ListElement {
 
 	}
 
-	int timestamp;
-	int endStamp;
-	int score1;
-	int score2;
-	int [] series;
-	String matchID;
-	String sport;
-	String team1;
-	String teamID1;
-	String team2;
-	String teamID2;
 
+	public ListElement(Parcel in) {
+		super();
+		readFromParcel(in);
+	}
+
+	public static final Parcelable.Creator<ListElement> CREATOR = new Parcelable.Creator<ListElement>() {
+		public ListElement createFromParcel(Parcel in) {
+			return new ListElement(in);
+		}
+		public ListElement[] newArray(int size) {
+			return new ListElement[size];
+		}
+	};
+
+	public void readFromParcel(Parcel in) {
+		 timestamp	= in.readInt();
+		 endStamp	= in.readInt();
+		 score1 	= in.readInt();
+		 score2 	= in.readInt();
+                      in.readIntArray(series);
+		 matchID	= in.readString();
+		 sport 		= in.readString();
+		 team1 		= in.readString();
+		 teamID1	= in.readString();
+		 team2 		= in.readString();
+		 teamID2	= in.readString();
+
+	}
+	public int describeContents() {
+		return 0;
+	}
+
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(timestamp);
+		dest.writeInt(endStamp);
+		dest.writeInt(score1);
+		dest.writeInt(score2);
+		dest.writeIntArray(series);
+		dest.writeString(matchID);
+		dest.writeString(sport);
+		dest.writeString(team1);
+		dest.writeString(teamID1);
+		dest.writeString(team2);
+		dest.writeString(teamID2);
+	}
 }

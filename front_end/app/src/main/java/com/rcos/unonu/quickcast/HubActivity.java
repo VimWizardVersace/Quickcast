@@ -1,8 +1,8 @@
 package com.rcos.unonu.quickcast;
 
 import android.os.Bundle;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,8 +21,7 @@ public class HubActivity extends AppCompatActivity
 	 * Used to store the last screen title. For use in {@link #restoreActionBar()}.
 	 */
 	private CharSequence mTitle;
-
-
+	private String requestURL;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,27 +37,32 @@ public class HubActivity extends AppCompatActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
+        requestURL = "localhost";
 
 	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
-		FragmentManager fragmentManager = getFragmentManager();
+		FragmentManager fragmentManager = getSupportFragmentManager();
 
         Fragment fragment;
 		// update the main content by replacing fragments
         switch (position) {
         	case 0:
-				fragment = new OverviewListFragment();
-				break;
+                Bundle args = new Bundle();
+                args.putString("requestURL", requestURL);
+				fragment = new OverviewListPager();
+                fragment.setArguments(args);
+                break;
 			case 1:
-				fragment = new SettingsFragment();
+//				fragment = new SettingsFragment();
+				fragment = new AboutFragment();
 				break;
 			case 2:
 				fragment = new AboutFragment();
 				break;
             default:
-                fragment = new OverviewListFragment();
+                fragment = new OverviewListPager();
 		}
 
 		fragmentManager.beginTransaction()
@@ -86,7 +90,6 @@ public class HubActivity extends AppCompatActivity
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
