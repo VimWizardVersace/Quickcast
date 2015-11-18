@@ -1,6 +1,5 @@
 package com.rcos.unonu.quickcast;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
@@ -23,11 +22,5 @@ public class SettingsFragment extends PreferenceFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-	}
-
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		((HubActivity) activity).onSectionAttached(2);
 	}
 }

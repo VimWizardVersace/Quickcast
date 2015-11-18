@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.ListFragment;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -47,6 +50,9 @@ public class OverviewListPager extends Fragment {
 
 //		makeRequest();
         refreshMatchList("a");
+        pagerAdapter.notifyDataSetChanged();
+        PagerTitleStrip pagerTitleStrip = (PagerTitleStrip)rootView.findViewById(R.id.pager_title_strip);
+        pagerTitleStrip.refreshDrawableState();
 		return rootView;
 	}
 
@@ -57,7 +63,7 @@ public class OverviewListPager extends Fragment {
 
 		@Override
 		public int getCount() {
-			return 3;
+			return 4;
 		}
 
 		@Override
@@ -65,6 +71,28 @@ public class OverviewListPager extends Fragment {
 			OverviewListFragment fragment = new OverviewListFragment();
             Bundle args = new Bundle();
             args.putParcelableArrayList("data", elements);
+
+            ArrayList<String> filter = new ArrayList<>();
+            switch (position) {
+                case 0:
+                    //args.putString("filter", "");
+                    filter.add("finished"); filter.add("false");
+                    args.putStringArrayList("filter", filter);
+                    break;
+                case 1:
+                    //args.putString("filter", "");
+                    break;
+                case 2:
+                    filter.add("sport"); filter.add("CSGO");
+                    args.putStringArrayList("filter", filter);
+                    break;
+                case 3:
+                    filter.add("sport"); filter.add("DOTA2");
+                    args.putStringArrayList("filter", filter);
+                    break;
+                default:
+                    //args.putString("filter", "");
+            }
 			fragment.setArguments(args);
 			return fragment;
 		}
@@ -78,17 +106,13 @@ public class OverviewListPager extends Fragment {
                     return "Following";
                 case 2:
                     return "Popular";
+                case 3:
+                    return "DOTA 2";
                 default:
                     return "???";
             }
         }
 	}
-
-//	@Override
-//	public void onAttach(Activity activity) {
-//		super.onAttach(activity);
-//		((HubActivity) activity).onSectionAttached(1);
-//	}
 
 	public void makeRequest() {
 		new JsonObjectRequest

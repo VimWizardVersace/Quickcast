@@ -2,10 +2,17 @@ package com.rcos.unonu.quickcast;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by unonu on 10/25/15.
@@ -33,11 +40,12 @@ public class ListElement implements Parcelable {
 	public static int score2;
 	public static int [] series;
 	public static String matchID;
-	public static String sport;
+	public String sport;
 	public static String team1;
 	public static String teamID1;
 	public static String team2;
 	public static String teamID2;
+    public Map<String, String> sorts;
 
 	public ListElement(String id, JSONObject details) throws JSONException {
 		matchID = id;
@@ -59,6 +67,13 @@ public class ListElement implements Parcelable {
 		teamID1		= teams.getString(1);
 		team2		= teams.getString(2);
 		teamID2		= teams.getString(3);
+
+        sorts = new HashMap<>();
+        sorts.put("sport", sport);
+        sorts.put("timestamp", Integer.toString(timestamp));
+        sorts.put("teamID1", teamID1);
+        sorts.put("teamID2", teamID2);
+        sorts.put("finished", endStamp == -1 ? "false" : "true");
 
 	}
 
@@ -89,6 +104,12 @@ public class ListElement implements Parcelable {
 		 teamID1	= in.readString();
 		 team2 		= in.readString();
 		 teamID2	= in.readString();
+
+        sorts.put("sport", sport);
+        sorts.put("timestamp", Integer.toString(timestamp));
+        sorts.put("teamID1", teamID1);
+        sorts.put("teamID2", teamID2);
+        sorts.put("finished", endStamp == -1 ? "false" : "true");
 
 	}
 	public int describeContents() {

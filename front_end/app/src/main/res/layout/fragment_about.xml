@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="\tQuickcast is an open source Android application for viewing e-sports scores being developed by a team of Rensselaer Center for Open Source (RCOS) students.\n\n\tOur current goal is to reach functionality for DOTA 2 while keeping our server and app system flexible enough to add other sports in the future.\n\n\tResources and technologies we are working with include:\n\t\t• Node.js\n\t\t• MongoDB\n\t\t• Json\n\t\t• Android Studio\n\nOur RCOS blog is located at\nhttp://rcos.io/projects/Farkinator/QuickCast/blog"
+        android:text="\tQuickcast is an open source Android application for viewing e-sports scores. It is being developed by a team of Rensselaer Center for Open Source (RCOS) students.\n\n\tOur current goal is to reach functionality for DOTA 2 while keeping our server and app system flexible enough to add other sports in the future.\n\n\tResources and technologies we are working with include:\n\t\t• Node.js\n\t\t• MongoDB\n\t\t• Json\n\t\t• Android Studio\n\nOur RCOS blog is located at\nhttp://rcos.io/projects/Farkinator/QuickCast/blog"
         android:id="@+id/textView3"
         android:layout_marginTop="59dp"
         android:layout_below="@+id/textView2"
