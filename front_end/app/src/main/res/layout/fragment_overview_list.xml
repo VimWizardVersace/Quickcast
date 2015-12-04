@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+              tools:context=".OverviewListFragment">
+                <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@android:id/list"
+                    android:layout_gravity="left|center_vertical"
+                    android:clickable="true"
+                    android:overScrollHeader="#ff00ff"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="No Recent Matches"
+                    android:id="@android:id/empty"/>
+</RelativeLayout>

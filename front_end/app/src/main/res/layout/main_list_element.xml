@@ -2,93 +2,108 @@
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
-	android:layout_height="100dip"
-	android:padding="6dip">
+	android:layout_height="wrap_content"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:paddingLeft="3dp"
+    android:paddingRight="0dp">
 
 	<com.rcos.unonu.quickcast.VerticalTextView
 		android:id="@+id/sport"
-		android:layout_width="10dip"
-		android:layout_height="match_parent"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:layout_alignParentStart="true"
-        android:gravity="bottom"
-		android:text="DOTA2"
-		android:textSize="12sp" />
+        android:text="DOTA2"
+		android:textSize="12sp"
+        android:gravity="center_horizontal|bottom"
+        android:layout_centerVertical="true"/>
 
 	<com.rcos.unonu.quickcast.VerticalTextView
 		android:id="@+id/sport_timer"
-		android:layout_width="10dip"
-		android:layout_height="match_parent"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:text="00:00"
 		android:textSize="12sp"
 		android:layout_alignParentTop="true"
-        android:gravity="bottom"
-		android:layout_toEndOf="@+id/sport" />
+        android:gravity="center_horizontal|bottom"
+		android:layout_toEndOf="@+id/sport"
+        android:layout_centerVertical="true"/>
 
-	<ImageView
+    <ImageView
 		android:id="@+id/logo_uno"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:background="@color/Green"
 		android:src = "@drawable/derp"
 		android:gravity="center"
 		android:contentDescription="NEEDS IMAGE"
-		android:layout_centerVertical="true"
-		android:layout_toEndOf="@+id/sport_timer" />
+        android:scaleType="matrix"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/name_uno"/>
 
-
-	<TextView
-		android:id="@+id/score_uno"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
-		android:gravity="center"
-		android:text=" 0 "
-		android:textSize="24sp"
-		android:layout_alignTop="@+id/logo_uno"
-		android:layout_toEndOf="@+id/logo_uno" />
-
-	<TextView
-		android:id="@+id/name_uno"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:background="@color/Green"
-		android:ellipsize="marquee"
-		android:gravity="center_vertical|left"
-		android:text="team uno"
-		android:textSize="16sp"
-		android:layout_alignParentTop="true"
-		android:layout_toEndOf="@+id/sport_timer" />
-
-	<TextView
-		android:id="@+id/score_dos"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
-		android:gravity="center"
-		android:text=" 0 "
-		android:textSize="24sp"
-        android:layout_below="@+id/name_uno"
-        android:layout_toStartOf="@+id/logo_dos" />
-
-	<ImageView
+    <ImageView
 		android:id="@+id/logo_dos"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:background="@color/Red"
 		android:src="@drawable/derp"
 		android:gravity="center"
         android:contentDescription="NEEDS IMAGE"
-        android:layout_below="@+id/name_uno"
-        android:layout_alignEnd="@+id/name_uno" />
+        android:scaleType="matrix"
+        android:layout_alignEnd="@+id/name_uno"
+        android:layout_alignBottom="@+id/logo_uno"/>
 
-	<TextView
+    <TextView
+        android:id="@+id/name_uno"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical|left"
+        android:text="team uno"
+        android:textSize="16sp"
+android:layout_alignParentTop="true"
+android:layout_toEndOf="@+id/sport_timer"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:paddingLeft="4dp"
+        android:backgroundTintMode="screen"
+        android:background="#dd00ff00"/>
+
+    <TextView
 		android:id="@+id/name_dos"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:background="@color/Red"
+		android:background="#ddff0000"
 		android:ellipsize="marquee"
         android:gravity="center_vertical|right"
 		android:text="team dos"
 		android:textSize="16sp"
-        android:layout_below="@+id/logo_uno"
-        android:layout_toEndOf="@+id/sport_timer" />
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingRight="4dp"
+        android:layout_alignBottom="@+id/logo_uno"
+        android:layout_alignStart="@+id/logo_uno"
+        android:backgroundTintMode="screen"/>
+
+
+    <TextView
+		android:id="@+id/score_uno"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:gravity="center"
+		android:text="0"
+		android:textSize="24sp"
+        android:layout_below="@+id/name_uno"
+        android:layout_toEndOf="@+id/logo_uno"/>
+
+    <TextView
+		android:id="@+id/score_dos"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:gravity="center"
+		android:text="0"
+		android:textSize="24sp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/logo_dos"/>
 
 </RelativeLayout>
