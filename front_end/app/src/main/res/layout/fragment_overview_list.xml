@@ -5,7 +5,17 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
               tools:context=".OverviewListFragment">
-                <ListView
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/quickcast"
+        android:layout_above="@android:id/empty"
+        android:layout_centerHorizontal="true"
+        android:alpha=".2"/>
+
+    <ListView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@android:id/list"
@@ -20,4 +30,5 @@
                     android:layout_centerHorizontal="true"
                     android:text="No Recent Matches"
                     android:id="@android:id/empty"/>
+
 </RelativeLayout>
