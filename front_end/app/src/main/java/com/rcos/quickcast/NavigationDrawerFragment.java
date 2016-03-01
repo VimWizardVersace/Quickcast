@@ -1,4 +1,4 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
@@ -51,6 +51,7 @@ public class NavigationDrawerFragment extends Fragment {
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerListView;
+    private ListView mDrawerFooter;
 	private View mFragmentContainerView;
 
 	private int mCurrentSelectedPosition = 0;
@@ -88,8 +89,8 @@ public class NavigationDrawerFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-		mDrawerListView = (ListView) inflater.inflate(
-				R.layout.fragment_navigation_drawer, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+		mDrawerListView = (ListView) rootView.findViewById(R.id.list_view);
 		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -97,16 +98,35 @@ public class NavigationDrawerFragment extends Fragment {
 			}
 		});
 		mDrawerListView.setAdapter(new ArrayAdapter<String>(
-				getActionBar().getThemedContext(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1,
-				new String[]{
-						getString(R.string.title_section1),
-						getString(R.string.title_section2),
-						getString(R.string.title_section3),
-				}));
+                getContext(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                new String[]{
+                        getString(R.string.title_section1),
+                        getString(R.string.title_section2),
+                        getString(R.string.title_section3),
+                        getString(R.string.title_section4),
+                        getString(R.string.title_section5),
+                        getString(R.string.title_section6),
+                }));
+		mDrawerFooter = (ListView) rootView.findViewById(R.id.footer);
+		mDrawerFooter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectItem(position);
+            }
+        });
+        mDrawerFooter.setAdapter(new ArrayAdapter<String>(
+                getContext(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                new String[]{
+                        getString(R.string.title_section5),
+                        getString(R.string.title_section6),
+                }));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-		return mDrawerListView;
+        mDrawerFooter.setItemChecked(mCurrentSelectedPosition, true);
+		return rootView;
 	}
 
 	public boolean isDrawerOpen() {
@@ -127,16 +147,12 @@ public class NavigationDrawerFragment extends Fragment {
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 		// set up the drawer's list view with items and click listener
 
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
-
 		// ActionBarDrawerToggle ties together the the proper interactions
 		// between the navigation drawer and the action bar app icon.
 		mDrawerToggle = new ActionBarDrawerToggle(
 				getActivity(),                    /* host Activity */
 				mDrawerLayout,                    /* DrawerLayout object */
-				R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
+				R.drawable.quickcast,             /* nav drawer image to replace 'Up' caret */
 				R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
 				R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
 		) {
@@ -165,33 +181,41 @@ public class NavigationDrawerFragment extends Fragment {
 							.getDefaultSharedPreferences(getActivity());
 					sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
 				}
-
+                getActionBar().setTitle("Categories");
 				getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
 			}
 		};
 
-		// If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
-		// per the navigation drawer design guidelines.
-		if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-			mDrawerLayout.openDrawer(mFragmentContainerView);
-		}
+        // If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
+        // per the navigation drawer design guidelines.
+        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
+            mDrawerLayout.openDrawer(mFragmentContainerView);
+        }
 
-		// Defer code dependent on restoration of previous instance state.
-		mDrawerLayout.post(new Runnable() {
-			@Override
-			public void run() {
-				mDrawerToggle.syncState();
-			}
-		});
+        // Defer code dependent on restoration of previous instance state.
+        mDrawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerToggle.syncState();
+            }
+        });
 
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 	}
 
 	private void selectItem(int position) {
 		mCurrentSelectedPosition = position;
 		if (mDrawerListView != null) {
-			mDrawerListView.setItemChecked(position, true);
+//			mDrawerListView.setItemChecked(position, true);
 		}
+//        if (mDrawerFooter != null) {
+//            mDrawerFooter.setItemChecked(position, true);
+//        }
 		if (mDrawerLayout != null) {
 			mDrawerLayout.closeDrawer(mFragmentContainerView);
 		}
@@ -217,7 +241,7 @@ public class NavigationDrawerFragment extends Fragment {
 	}
 
 	@Override
-	public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
 	}
@@ -234,7 +258,7 @@ public class NavigationDrawerFragment extends Fragment {
 		// If the drawer is open, show the global app actions in the action bar. See also
 		// showGlobalContextActionBar, which controls the top-left area of the action bar.
 		if (mDrawerLayout != null && isDrawerOpen()) {
-			inflater.inflate(R.menu.global, menu);
+            inflater.inflate(R.menu.global, menu);
 			showGlobalContextActionBar();
 		}
 		super.onCreateOptionsMenu(menu, inflater);
@@ -260,9 +284,6 @@ public class NavigationDrawerFragment extends Fragment {
 	 */
 	private void showGlobalContextActionBar() {
 		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setTitle(R.string.app_name);
 	}
 
 	private ActionBar getActionBar() {
@@ -278,4 +299,27 @@ public class NavigationDrawerFragment extends Fragment {
 		 */
 		void onNavigationDrawerItemSelected(int position);
 	}
+
+    public CharSequence getItemTitle(int position) {
+        switch (position){
+            case 0:
+                return getString(R.string.title_section1);
+            case 1:
+                return getString(R.string.title_section2);
+            case 2:
+                return getString(R.string.title_section3);
+            case 3:
+                return getString(R.string.title_section4);
+            case 4:
+                return getString(R.string.title_section5);
+            case 5:
+                return getString(R.string.title_section6);
+            default:
+                return "???";
+        }
+    }
+
+    public CharSequence getCurrentTitle() {
+        return getItemTitle(mCurrentSelectedPosition);
+    }
 }

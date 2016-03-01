@@ -243,68 +243,6 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow"
-        android:layout_height="20dp"
-        android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp" >
-
-        <ImageView
-            android:id="@+id/ban2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"
-            />
-        <ImageView
-            android:id="@+id/ban4"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"
-            />
-        <ImageView
-            android:id="@+id/pick6"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick7"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/ban11"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/ban12"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick13"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick15"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/ban17"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick19"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-
-    </TableRow>
-
-    <TableRow
         android:id="@+id/tableDire"
         android:layout_height="20dp"
         android:layout_width="match_parent"
@@ -571,65 +509,6 @@
             android:text="D"
             android:textSize="18sp"
             android:layout_height="20dp" />
-    </TableRow>
-    <TableRow
-        android:id="@+id/tableRow"
-        android:layout_height="20dp"
-        android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp" >
-
-        <ImageView
-            android:id="@+id/ban1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/ban3"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick5"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick8"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/ban9"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/ban11"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick14"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick16"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/ban18"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:id="@+id/pick20"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"/>
-
     </TableRow>
 
 </TableLayout>

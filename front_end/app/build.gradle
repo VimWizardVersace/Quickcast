@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.rcos.unonu.quickcast"
+        applicationId "com.rcos.quickcast"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1

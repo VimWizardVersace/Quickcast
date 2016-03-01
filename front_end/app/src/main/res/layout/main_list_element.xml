@@ -8,7 +8,7 @@
     android:paddingLeft="3dp"
     android:paddingRight="0dp">
 
-	<com.rcos.unonu.quickcast.VerticalTextView
+	<com.rcos.quickcast.VerticalTextView
 		android:id="@+id/sport"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:gravity="center_horizontal|bottom"
         android:layout_centerVertical="true"/>
 
-	<com.rcos.unonu.quickcast.VerticalTextView
+	<com.rcos.quickcast.VerticalTextView
 		android:id="@+id/sport_timer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

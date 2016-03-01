@@ -1,4 +1,4 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -78,13 +78,13 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 
 		holder = (ViewHolder) element.getTag();
 
-		ListElement elementData = elements.get(position);
+		ListElement elementData = this.elements.get(position);
 
 		holder.sportLabel.setText(elementData.sport);
 		holder.timeLabel.setText("XX:XX");
-		holder.team_1Label.setText(elementData.team1);
+		holder.team_1Label.setText(elementData.matchID);
 		holder.team_2Label.setText(elementData.team2);
-		holder.score_1Label.setText(Integer.toString(elementData.score1));
+		holder.score_1Label.setText(Integer.toString(position));
 		holder.score_2Label.setText(Integer.toString(elementData.score2));
 
 		return element;

@@ -1,4 +1,4 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,6 +36,7 @@ public class OverviewListFragment extends ListFragment {
 
         elements.clear();
         for ( ListElement element: all) {
+//            Log.d(" QUICKCAST!!!!", "Added match " + element.matchID);
             for (int i=0; i < filters.size(); i += 2) {
                 if (element.sorts.get( filters.get(i) ).equals(filters.get(i+1)) ) {
                     elements.add(element);

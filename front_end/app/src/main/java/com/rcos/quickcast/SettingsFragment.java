@@ -1,32 +1,26 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class AboutFragment extends Fragment {
+public class SettingsFragment extends PreferenceFragment {
 
-    public AboutFragment() {
+    public SettingsFragment() {
     }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        return inflater.inflate(R.layout.fragment_about, container, false);
+		return rootView;
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
 	}
-
-//	@Override
-//	public void onAttach(Activity activity) {
-//		super.onAttach(activity);
-//		((HubActivity) activity).onSectionAttached(3);
-//	}
 }

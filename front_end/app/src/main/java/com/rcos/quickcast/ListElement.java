@@ -1,18 +1,15 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by unonu on 10/25/15.
@@ -48,25 +45,25 @@ public class ListElement implements Parcelable {
     public Map<String, String> sorts;
 
 	public ListElement(String id, JSONObject details) throws JSONException {
-		matchID = id;
+		matchID = new String(id);
 
 		JSONArray teams = details.getJSONArray("teams");
 		JSONArray scores = details.getJSONArray("score");
 		JSONArray jsonSeries = details.getJSONArray("series");
 
 		sport		= details.getString("sport");
-		timestamp	= details.getInt("start time");
-		endStamp	= details.optInt("end time", -1);
+		timestamp	= details.optInt("start_time", -1);
+		endStamp	= details.optInt("end_time", -1);
 		series		= new int [3];
 		series[0]	= jsonSeries.getInt(0);
 		series[1]	= jsonSeries.getInt(1);
 		series[2]	= jsonSeries.getInt(2);
 		score1		= scores.getInt(0);
 		score2		= scores.getInt(1);
-		team1		= teams.getString(0);
-		teamID1		= teams.getString(1);
-		team2		= teams.getString(2);
-		teamID2		= teams.getString(3);
+		team1		= teams.optString(0, "a");
+		teamID1		= teams.optString(1, "b");
+		team2		= teams.optString(2, "c");
+		teamID2		= teams.optString(3, "d");
 
         sorts = new HashMap<>();
         sorts.put("sport", sport);
@@ -74,6 +71,8 @@ public class ListElement implements Parcelable {
         sorts.put("teamID1", teamID1);
         sorts.put("teamID2", teamID2);
         sorts.put("finished", endStamp == -1 ? "false" : "true");
+
+        Log.d(" QUICKCAST!!!!", "Constructed new List element: "+matchID);
 
 	}
 
