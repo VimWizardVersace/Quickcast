@@ -36,7 +36,7 @@ updateDB = function(response) {
 		// Here we will ignore all games that are not of league_tier 3.
 		for(var i = 0; i < games.length; i++){
 			// console.log(games[i]);
-			if(games[i].league_tier != 3){
+			if(games[i].league_tier < 1){
 				//Remove 1 element from index i
 				games.splice(i, 1);
 				//Standard iteration procedure :) Because we deleted, we need to backtrack a little.

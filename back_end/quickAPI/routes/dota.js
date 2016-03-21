@@ -18,4 +18,14 @@ router.get('/live', function(req, res, next){
 		res.json(livegames[0].dotagames);
 	});
 });
+router.get('/live/:id', function(req, res, next){
+	Live.find(function(err, livegames){
+		if(err) return next(err);
+		for(var i=0; i<livegames[0].dotagames.length; i++){
+			if(livegames[0].dotagames[i].match_id==req.params.id){
+				res.json(livegames[0].dotagames[i]);
+			}
+		}
+	});
+})
 module.exports = router;
