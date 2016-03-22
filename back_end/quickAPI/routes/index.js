@@ -34,10 +34,10 @@ router.get('/live', function(req, res, next){
 				//See the help document on my blog for demystifying the dota 2 web api.
 				simpleresponse.push({
 					"matchid" : currentgame.match_id, 
-					"sport" : "DOTA2",
 					"series" : [currentgame.dire_series_wins, currentgame.radiant_series_wins,totalgames],
 					"score" : [currentgame.scoreboard.dire.score, currentgame.scoreboard.radiant.score],
-					"teams" : [currentgame.dire_team.team_name, currentgame.radiant_team.team_name]
+					"teams" : [currentgame.dire_team.team_name, currentgame.dire_team.team_id, currentgame.radiant_team.team_name, currentgame.radiant_team.team_id],
+					"duration" : currentgame.scoreboard.duration
 				});
 			}
 		}
