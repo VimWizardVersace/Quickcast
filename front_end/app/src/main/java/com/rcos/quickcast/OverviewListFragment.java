@@ -1,4 +1,4 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ public class OverviewListFragment extends ListFragment {
     //private int sortMethod;
     private ArrayList<String> filters;
 	private ArrayList<ListElement> elements;
+    private ListProvider mListProvider;
 
     public OverviewListFragment() {
         //sortMethod = 1;
@@ -36,6 +37,7 @@ public class OverviewListFragment extends ListFragment {
 
         elements.clear();
         for ( ListElement element: all) {
+//            Log.d(" QUICKCAST!!!!", "Added match " + element.matchID);
             for (int i=0; i < filters.size(); i += 2) {
                 if (element.sorts.get( filters.get(i) ).equals(filters.get(i+1)) ) {
                     elements.add(element);
@@ -52,7 +54,7 @@ public class OverviewListFragment extends ListFragment {
 		super.onActivityCreated(savedInstanceState);
 
 		// Construct the Provider
-        ListProvider mListProvider = new ListProvider(getActivity(), elements);
+        mListProvider = new ListProvider(getActivity(), elements);
 
 		setListAdapter(mListProvider);
 	}
@@ -60,7 +62,31 @@ public class OverviewListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Intent intent = new Intent(getActivity(), DrilldownActivity.class);
+        ListElement element = elements.get(position);
+        intent.putExtra("sport", element.sport);
+        intent.putExtra("matchid", element.matchID);
 		startActivity(intent);
+        // finish?
 	}
+
+    public void update( Bundle args ) {
+        filters = args.getStringArrayList("filter");
+        ArrayList<ListElement> all = args.getParcelableArrayList("data");
+
+        if (filters == null) filters = new ArrayList<>();
+        if (all == null) all = new ArrayList<>();
+
+        elements.clear();
+        for ( ListElement element: all) {
+//            Log.d(" QUICKCAST!!!!", "Added match " + element.matchID);
+            for (int i=0; i < filters.size(); i += 2) {
+                if (element.sorts.get( filters.get(i) ).equals(filters.get(i+1)) ) {
+                    elements.add(element);
+                    break;
+                }
+            }
+        }
+        mListProvider.notifyDataSetChanged();
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 /*
  * http://stackoverflow.com/questions/1258275/vertical-rotated-label-in-android/7855852#7855852

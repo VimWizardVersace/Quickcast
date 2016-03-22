@@ -3,12 +3,13 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-    android:paddingTop="6dp"
-    android:paddingBottom="6dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
     android:paddingLeft="3dp"
-    android:paddingRight="0dp">
+    android:paddingRight="0dp"
+    android:background="#222222">
 
-	<com.rcos.unonu.quickcast.VerticalTextView
+	<com.rcos.quickcast.VerticalTextView
 		android:id="@+id/sport"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
         android:gravity="center_horizontal|bottom"
         android:layout_centerVertical="true"/>
 
-	<com.rcos.unonu.quickcast.VerticalTextView
+	<com.rcos.quickcast.VerticalTextView
 		android:id="@+id/sport_timer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -39,7 +40,7 @@
 		android:contentDescription="NEEDS IMAGE"
         android:scaleType="matrix"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/name_uno"/>
+        android:layout_toEndOf="@+id/sport_timer"/>
 
     <ImageView
 		android:id="@+id/logo_dos"
@@ -50,8 +51,27 @@
 		android:gravity="center"
         android:contentDescription="NEEDS IMAGE"
         android:scaleType="matrix"
-        android:layout_alignEnd="@+id/name_uno"
-        android:layout_alignBottom="@+id/logo_uno"/>
+        android:layout_alignBottom="@+id/logo_uno"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+		android:id="@+id/name_dos"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:ellipsize="marquee"
+        android:gravity="center_vertical|right"
+		android:text="team dos"
+		android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingRight="4dp"
+        android:layout_alignBottom="@+id/logo_uno"
+        android:backgroundTintMode="screen"
+        android:layout_toEndOf="@+id/logo_uno"
+        android:background="#80000000"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/name_uno"
@@ -60,30 +80,18 @@
         android:ellipsize="marquee"
         android:gravity="center_vertical|left"
         android:text="team uno"
-        android:textSize="16sp"
-android:layout_alignParentTop="true"
-android:layout_toEndOf="@+id/sport_timer"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_alignParentTop="true"
         android:paddingBottom="2dp"
         android:paddingTop="2dp"
         android:paddingLeft="4dp"
         android:backgroundTintMode="screen"
-        android:background="#dd00ff00"/>
-
-    <TextView
-		android:id="@+id/name_dos"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:background="#ddff0000"
-		android:ellipsize="marquee"
-        android:gravity="center_vertical|right"
-		android:text="team dos"
-		android:textSize="16sp"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:paddingRight="4dp"
-        android:layout_alignBottom="@+id/logo_uno"
+        android:background="#80000000"
+        android:layout_toStartOf="@+id/logo_dos"
         android:layout_alignStart="@+id/logo_uno"
-        android:backgroundTintMode="screen"/>
+        android:singleLine="true"/>
 
 
     <TextView
@@ -93,8 +101,9 @@ android:layout_toEndOf="@+id/sport_timer"
 		android:gravity="center"
 		android:text="0"
 		android:textSize="24sp"
+        android:layout_toEndOf="@+id/logo_uno"
         android:layout_below="@+id/name_uno"
-        android:layout_toEndOf="@+id/logo_uno"/>
+        android:layout_above="@+id/name_dos"/>
 
     <TextView
 		android:id="@+id/score_dos"
@@ -103,7 +112,8 @@ android:layout_toEndOf="@+id/sport_timer"
 		android:gravity="center"
 		android:text="0"
 		android:textSize="24sp"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/logo_dos"/>
+        android:layout_toStartOf="@+id/logo_dos"
+        android:layout_below="@+id/name_uno"
+        android:layout_above="@+id/name_dos"/>
 
 </RelativeLayout>

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.rcos.unonu.quickcast"
+        applicationId "com.rcos.quickcast"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
@@ -17,7 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/layout/dota2'] } }
+    sourceSets { main { res.srcDirs = ['src/main/res'] } }
 }
 
 dependencies {

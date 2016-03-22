@@ -1,4 +1,4 @@
-package com.rcos.unonu.quickcast;
+package com.rcos.quickcast;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 	Okay here:
 	Get Recent Matches —>
 	{ match ID :
-		{ "start time",
+		{ "start duration",
 			"sport",
 			"teams" : [ team ID 1, team ID 2],
 			"score" : [hero score 1, hero score 2],
@@ -78,10 +78,10 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 
 		holder = (ViewHolder) element.getTag();
 
-		ListElement elementData = elements.get(position);
+		ListElement elementData = this.elements.get(position);
 
 		holder.sportLabel.setText(elementData.sport);
-		holder.timeLabel.setText("XX:XX");
+		holder.timeLabel.setText("00:00");
 		holder.team_1Label.setText(elementData.team1);
 		holder.team_2Label.setText(elementData.team2);
 		holder.score_1Label.setText(Integer.toString(elementData.score1));
