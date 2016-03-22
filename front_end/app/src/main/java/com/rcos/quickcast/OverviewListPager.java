@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,17 +35,21 @@ public class OverviewListPager extends Fragment {
 
 	private String mRequestURL;
 	private ArrayList<ListElement> elements;
-    private FragmentStatePagerAdapter pagerAdapter;
+    private OverviewListAdapter pagerAdapter;
 	public ViewPager listPager;
+    private SparseArray<OverviewListFragment> fragments;
 
     public OverviewListPager() {
-		mRequestURL = "http://128.113.209.217:5000/";
+		mRequestURL = "http://quickcast.farkinator.c9users.io";
         elements = new ArrayList<>();
+        fragments = new SparseArray<>();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
+        mRequestURL = getArguments().getString("requestURL");
+
 		View rootView = inflater.inflate(R.layout.pager_overview_list, container, false);
         pagerAdapter = new OverviewListAdapter(getFragmentManager());
         pagerAdapter.notifyDataSetChanged();
@@ -58,7 +65,9 @@ public class OverviewListPager extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                getActivity().setTitle( pagerAdapter.getPageTitle(position) );
+                HubActivity ha = (HubActivity) getActivity();
+                ha.setTitle( pagerAdapter.getPageTitle(position) );
+                ha.selectNavigationItem(position);
             }
 
             @Override
@@ -88,6 +97,7 @@ public class OverviewListPager extends Fragment {
         super.onResume();
         Bundle args = getArguments();
         setCurrentItem(args.getInt("position",0));
+        mRequestURL = args.getString("requestURL");
     }
 
 	private class OverviewListAdapter extends FragmentStatePagerAdapter {
@@ -124,15 +134,22 @@ public class OverviewListPager extends Fragment {
                     args.putStringArrayList("filter", filter);
                     break;
                 case 3:
-                    filter.add("sport"); filter.add("Dota2");
+                    filter.add("sport"); filter.add("DOTA2");
                     args.putStringArrayList("filter", filter);
                     break;
                 default:
                     args.putString("filter", "");
             }
 			fragment.setArguments(args);
+            fragments.put(position, fragment);
 			return fragment;
 		}
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            fragments.remove(position);
+            super.destroyItem(container, position, object);
+        }
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -148,6 +165,10 @@ public class OverviewListPager extends Fragment {
                 default:
                     return "???";
             }
+        }
+
+        public OverviewListFragment getFragment(int position) {
+            return fragments.get(position);
         }
 	}
 
@@ -165,12 +186,12 @@ public class OverviewListPager extends Fragment {
 
         // Start the queue
         mRequestQueue.start();
-        Log.d(" QUICKCAST!!!!", "making request " + this.elements.size());
-		JsonObjectRequest request = new JsonObjectRequest
-		(this.mRequestURL +"recent_matches" , null, new Response.Listener<JSONObject>() {
+        Log.d(" QUICKCAST!!!!", "making request ...");
+		JsonArrayRequest request = new JsonArrayRequest
+		(String.format("%s/live", mRequestURL), new Response.Listener<JSONArray>() {
 
 			@Override
-			public void onResponse(JSONObject response) {
+			public void onResponse(JSONArray response) {
                 Log.d(" QUICKCAST!!!!", "got response??????");
 				refreshMatchList(response);
 			}
@@ -179,43 +200,69 @@ public class OverviewListPager extends Fragment {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				// TODO Auto-generated method stub
-				Log.d(" QUICKCAST!!!!", "Bad response from makeRequest");
-			}
+				Log.d(" QUICKCAST!!!!", "Bad response from makeRequest.");
+            }
 		});
-        Log.d(" QUICKCAST!!!!", "finished making request " + this.mRequestURL + "recent_matches");
+        Log.d(" QUICKCAST!!!!", "finished making request to " + mRequestURL + "live");
         mRequestQueue.add(request);
 	}
 
-	public int refreshMatchList(JSONObject matches) {
-		Log.d(" QUICKCAST!!!!", "match list has " + this.elements.size());
+	public int refreshMatchList(JSONArray matches) {
+		Log.d(" QUICKCAST!!!!", "match list has " + elements.size());
         Log.d(" QUICKCAST!!!!", "response body:\n\n " + matches.toString() + "\n\n");
-		this.elements.clear();
+		elements.clear();
 
-		Iterator<String> ids = matches.keys();
-		while (ids.hasNext()) {
-			String id = ids.next();
-            ListElement x = null;
+        ListElement x = null;
+        int j = 0;
+        try {
+            x = new ListElement( (JSONObject) matches.get(j) );
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        while (x != null) {
+            elements.add(x);
+
+            j++;
+
             try {
-                x = new ListElement(id, matches.getJSONObject(id));
+                x =  new ListElement( (JSONObject) matches.get(j) );
             } catch (JSONException e) {
+                x = null;
                 e.printStackTrace();
             }
-            if (x != null) {
-                this.elements.add(0, x);
-                Log.d(" QUICKCAST!!!!", "refresh " + this.elements.get(0).matchID + " : " + x.matchID);
-                if (elements.size() > 1)
-                    Log.d(" QUICKCAST!!!!", "also " + this.elements.get(1).matchID);
+        }
+
+        pagerAdapter.notifyDataSetChanged();
+        for (int i=0; i < fragments.size(); i++) {
+            OverviewListFragment f = pagerAdapter.getFragment(i);
+            if (f != null ) {
+                Bundle args = new Bundle();
+                args.putParcelableArrayList("data", elements);
+
+                ArrayList<String> filter = new ArrayList<>();
+                switch (i) {
+                    case 0:
+                        filter.add("finished"); filter.add("false");
+                        args.putStringArrayList("filter", filter);
+                        break;
+                    case 1:
+                        //args.putString("filter", "");
+                        break;
+                    case 2:
+                        filter.add("sport"); filter.add("CSGO");
+                        args.putStringArrayList("filter", filter);
+                        break;
+                    case 3:
+                        filter.add("sport"); filter.add("DOTA2");
+                        args.putStringArrayList("filter", filter);
+                        break;
+                    default:
+                        args.putString("filter", "");
+                }
+                f.update(args);
             }
         }
-//        for (ListElement e : elements) {
-        for (int i=0; i < this.elements.size(); i++) {
-            ListElement e = this.elements.get(i);
-            Log.d(" QUICKCAST!!!!", "recap "+e.matchID);
-            e.matchID = e.matchID + 'r';
-            e.sport = e.sport + '3';
-        }
-        pagerAdapter.notifyDataSetChanged();
-        return this.elements.size();
+        return elements.size();
 	}
 
     public void setCurrentItem(int position) {

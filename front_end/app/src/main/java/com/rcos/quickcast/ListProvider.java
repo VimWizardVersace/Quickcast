@@ -17,7 +17,7 @@ import java.util.ArrayList;
 	Okay here:
 	Get Recent Matches —>
 	{ match ID :
-		{ "start time",
+		{ "start duration",
 			"sport",
 			"teams" : [ team ID 1, team ID 2],
 			"score" : [hero score 1, hero score 2],
@@ -81,10 +81,10 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 		ListElement elementData = this.elements.get(position);
 
 		holder.sportLabel.setText(elementData.sport);
-		holder.timeLabel.setText("XX:XX");
-		holder.team_1Label.setText(elementData.matchID);
+		holder.timeLabel.setText("00:00");
+		holder.team_1Label.setText(elementData.team1);
 		holder.team_2Label.setText(elementData.team2);
-		holder.score_1Label.setText(Integer.toString(position));
+		holder.score_1Label.setText(Integer.toString(elementData.score1));
 		holder.score_2Label.setText(Integer.toString(elementData.score2));
 
 		return element;

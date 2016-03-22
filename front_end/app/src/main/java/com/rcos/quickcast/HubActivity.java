@@ -29,7 +29,7 @@ public class HubActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hub);
 
-        mRequestURL = "http://128.113.209.217:5000/";
+        mRequestURL = "http://quickcast.farkinator.c9users.io";
         mNavigationDrawerFragment = (NavigationDrawerFragment)
 				getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
@@ -55,10 +55,13 @@ public class HubActivity extends AppCompatActivity
 		// update the main content by replacing fragments
         if (position > -1 && position < 4) {
             if (refresh) {
-                args.putString("mRequestURL", mRequestURL);
+                args.putString("requestURL", mRequestURL);
                 args.putInt("position", position);
                 fragment = new OverviewListPager();
                 fragment.setArguments(args);
+//                if (mNavigationDrawerFragment != null)
+//                    mTitle = mNavigationDrawerFragment.getItemTitle(position);
+//                getSupportActionBar().setTitle(mTitle);
             } else {
                 fragment = fragmentManager.findFragmentById(R.id.container);
                 ((OverviewListPager) fragment).setCurrentItem(position);
@@ -67,6 +70,8 @@ public class HubActivity extends AppCompatActivity
         } else {
             fragment = new AboutFragment();
             refresh = true;
+            mTitle = getString(R.string.title_section6);
+//            getSupportActionBar().setTitle(mTitle);
 		}
 
 		fragmentManager.beginTransaction()
@@ -145,5 +150,9 @@ public class HubActivity extends AppCompatActivity
     public void setTitle (CharSequence nTitle) {
         mTitle = nTitle;
         getSupportActionBar().setTitle(mTitle);
+    }
+
+    public void selectNavigationItem( int position ) {
+        mNavigationDrawerFragment.selectItem(position);
     }
 }

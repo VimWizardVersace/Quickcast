@@ -51,7 +51,7 @@ public class NavigationDrawerFragment extends Fragment {
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerListView;
-    private ListView mDrawerFooter;
+//    private ListView mDrawerFooter;
 	private View mFragmentContainerView;
 
 	private int mCurrentSelectedPosition = 0;
@@ -106,26 +106,27 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section2),
                         getString(R.string.title_section3),
                         getString(R.string.title_section4),
-                        getString(R.string.title_section5),
-                        getString(R.string.title_section6),
+//                        getString(R.string.title_section5),
+//                        getString(R.string.title_section6),
                 }));
-		mDrawerFooter = (ListView) rootView.findViewById(R.id.footer);
-		mDrawerFooter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
-            }
-        });
-        mDrawerFooter.setAdapter(new ArrayAdapter<String>(
-                getContext(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_section5),
-                        getString(R.string.title_section6),
-                }));
-		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-        mDrawerFooter.setItemChecked(mCurrentSelectedPosition, true);
+//		mDrawerFooter = (ListView) rootView.findViewById(R.id.footer);
+//		mDrawerFooter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                selectItem(position);
+//            }
+//        });
+//        mDrawerFooter.setAdapter(new ArrayAdapter<String>(
+//                getContext(),
+//                android.R.layout.simple_list_item_activated_1,
+//                android.R.id.text1,
+//                new String[]{
+//                        getString(R.string.title_section5),
+//                        getString(R.string.title_section6),
+//                }));
+//		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+//        mDrawerFooter.setItemChecked(mCurrentSelectedPosition, true);
+        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return rootView;
 	}
 
@@ -162,7 +163,7 @@ public class NavigationDrawerFragment extends Fragment {
 				if (!isAdded()) {
 					return;
 				}
-
+                getActivity().setTitle( getCurrentTitle() );
 				getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
 			}
 
@@ -208,10 +209,10 @@ public class NavigationDrawerFragment extends Fragment {
         getActionBar().setHomeButtonEnabled(true);
 	}
 
-	private void selectItem(int position) {
+	public void selectItem(int position) {
 		mCurrentSelectedPosition = position;
 		if (mDrawerListView != null) {
-//			mDrawerListView.setItemChecked(position, true);
+			mDrawerListView.setItemChecked(position, true);
 		}
 //        if (mDrawerFooter != null) {
 //            mDrawerFooter.setItemChecked(position, true);

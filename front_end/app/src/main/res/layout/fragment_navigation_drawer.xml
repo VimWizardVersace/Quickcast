@@ -1,24 +1,66 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-<LinearLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drawer_selector"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="24sp"
+        android:id="@+id/matches"
+        android:text="Matches"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
     <ListView
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/list_view"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
         android:background="@drawable/drawer_selector"
-        tools:context=".NavigationDrawerFragment" />
+        tools:context=".NavigationDrawerFragment"
+        android:layout_above="@+id/settings"
+        android:textSize="24sp"
+        android:layout_below="@+id/matches"/>
 
-    <ListView
-        android:layout_width="fill_parent"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/footer"/>
+        android:background="@drawable/drawer_selector"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="24sp"
+        android:id="@+id/settings"
+        android:clickable="true"
+        android:text="Settings"
+        android:layout_above="@+id/about"
+        android:layout_alignParentStart="true"/>
 
-</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drawer_selector"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="24sp"
+        android:id="@+id/about"
+        android:clickable="true"
+        android:text="About"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"/>
+
+</RelativeLayout>
