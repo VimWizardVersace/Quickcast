@@ -11,13 +11,12 @@ public class SettingsFragment extends PreferenceFragment {
     public SettingsFragment() {
     }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+    @Override
+    public void onCreate(Bundle savedInstance) {
+        super.onCreate(savedInstance);
 
-		return rootView;
-	}
+        addPreferencesFromResource(R.xml.preferences);
+    }
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {

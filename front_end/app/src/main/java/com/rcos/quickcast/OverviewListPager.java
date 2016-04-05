@@ -1,11 +1,11 @@
 package com.rcos.quickcast;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.ListFragment;
+import android.support.v13.app.FragmentStatePagerAdapter;
+import android.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.SparseArray;
@@ -228,7 +228,6 @@ public class OverviewListPager extends Fragment {
                 x =  new ListElement( (JSONObject) matches.get(j) );
             } catch (JSONException e) {
                 x = null;
-                e.printStackTrace();
             }
         }
 

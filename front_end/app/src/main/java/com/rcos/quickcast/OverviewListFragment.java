@@ -1,8 +1,10 @@
 package com.rcos.quickcast;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import android.os.SystemClock;
+import android.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +16,17 @@ import java.util.ArrayList;
 public class OverviewListFragment extends ListFragment {
 
     //private int sortMethod;
-    private ArrayList<String> filters;
-	private ArrayList<ListElement> elements;
+    private ArrayList<String> mFilters;
+	private ArrayList<ListElement> mElements;
     private ListProvider mListProvider;
+    private Handler mHandler;
+    private Runnable mUpdateMatchTimers;
 
     public OverviewListFragment() {
         //sortMethod = 1;
-        filters = new ArrayList<>();
-        elements = new ArrayList<>();
+        mFilters = new ArrayList<>();
+        mElements = new ArrayList<>();
+        mHandler = new Handler();
     }
 
 	@Override
@@ -29,22 +34,48 @@ public class OverviewListFragment extends ListFragment {
 							 Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_overview_list, container, false);
         Bundle args = getArguments();
-        filters = args.getStringArrayList("filter");
+        mFilters = args.getStringArrayList("filter");
         ArrayList<ListElement> all = args.getParcelableArrayList("data");
 
-        if (filters == null) filters = new ArrayList<>();
+        if (mFilters == null) mFilters = new ArrayList<>();
         if (all == null) all = new ArrayList<>();
 
-        elements.clear();
+        mElements.clear();
         for ( ListElement element: all) {
 //            Log.d(" QUICKCAST!!!!", "Added match " + element.matchID);
-            for (int i=0; i < filters.size(); i += 2) {
-                if (element.sorts.get( filters.get(i) ).equals(filters.get(i+1)) ) {
-                    elements.add(element);
+            for (int i=0; i < mFilters.size(); i += 2) {
+                if (element.sorts.get( mFilters.get(i) ).equals(mFilters.get(i+1)) ) {
+                    mElements.add(element);
                     break;
                 }
             }
         }
+
+        mUpdateMatchTimers = new Runnable() {
+            @Override
+            public void run() {
+                long millis = SystemClock.uptimeMillis();
+
+                for (ListElement element : mElements) {
+                    if (element.duration > 0) {
+                        double curTime = (millis-element.refTime)/1000.;
+                        int seconds = (int) (element.duration+curTime)%60;
+                        int minutes = (int) (element.duration+curTime)/60;
+                        if (seconds < 10)
+                            element.niceTime = String.format("%d:0%d", minutes, seconds);
+                        else
+                            element.niceTime = String.format("%d:%d", minutes, seconds);
+                    }
+                }
+
+                mListProvider.updateTimes();
+                mHandler.postDelayed(this, 200);
+            }
+        };
+
+
+        mHandler.removeCallbacks(mUpdateMatchTimers);
+        mHandler.postDelayed(mUpdateMatchTimers, 100);
         Log.d(" QUICKCAST!!!!", "Made new OLF");
 		return rootView;
 	}
@@ -54,7 +85,7 @@ public class OverviewListFragment extends ListFragment {
 		super.onActivityCreated(savedInstanceState);
 
 		// Construct the Provider
-        mListProvider = new ListProvider(getActivity(), elements);
+        mListProvider = new ListProvider(getActivity(), mElements);
 
 		setListAdapter(mListProvider);
 	}
@@ -62,26 +93,32 @@ public class OverviewListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Intent intent = new Intent(getActivity(), DrilldownActivity.class);
-        ListElement element = elements.get(position);
+        ListElement element = mElements.get(position);
         intent.putExtra("sport", element.sport);
         intent.putExtra("matchid", element.matchID);
+        intent.putExtra("team1", element.team1);
+        intent.putExtra("team2", element.team2);
+        intent.putExtra("score1", element.score1);
+        intent.putExtra("score2", element.score2);
+
+        mHandler.removeCallbacks(mUpdateMatchTimers);
 		startActivity(intent);
         // finish?
 	}
 
     public void update( Bundle args ) {
-        filters = args.getStringArrayList("filter");
+        mFilters = args.getStringArrayList("filter");
         ArrayList<ListElement> all = args.getParcelableArrayList("data");
 
-        if (filters == null) filters = new ArrayList<>();
+        if (mFilters == null) mFilters = new ArrayList<>();
         if (all == null) all = new ArrayList<>();
 
-        elements.clear();
+        mElements.clear();
         for ( ListElement element: all) {
 //            Log.d(" QUICKCAST!!!!", "Added match " + element.matchID);
-            for (int i=0; i < filters.size(); i += 2) {
-                if (element.sorts.get( filters.get(i) ).equals(filters.get(i+1)) ) {
-                    elements.add(element);
+            for (int i=0; i < mFilters.size(); i += 2) {
+                if (element.sorts.get( mFilters.get(i) ).equals(mFilters.get(i+1)) ) {
+                    mElements.add(element);
                     break;
                 }
             }

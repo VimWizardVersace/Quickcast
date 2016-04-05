@@ -13,7 +13,8 @@
         android:paddingBottom="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textSize="24sp"
+        android:textSize="20sp
+        "
         android:id="@+id/matches"
         android:text="Matches"
         android:layout_alignParentTop="true"
@@ -41,12 +42,13 @@
         android:paddingBottom="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:id="@+id/settings"
         android:clickable="true"
         android:text="Settings"
         android:layout_above="@+id/about"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:onClick="showPreferences"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -56,11 +58,12 @@
         android:paddingBottom="12dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:id="@+id/about"
         android:clickable="true"
         android:text="About"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:onClick="showAbout"/>
 
 </RelativeLayout>

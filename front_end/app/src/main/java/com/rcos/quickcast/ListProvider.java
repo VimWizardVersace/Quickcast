@@ -29,11 +29,11 @@ import java.util.ArrayList;
 
 public class ListProvider extends ArrayAdapter<ListElement> {
 	private Context context;
-	private ArrayList<ListElement> elements;
+	private ArrayList<ListElement> mElements;
 
 	public ListProvider(Context context, ArrayList<ListElement> list) {
 		super(context, -1, list);
-		this.elements = list;
+		this.mElements = list;
 		this.context = context;
 	}
 
@@ -78,10 +78,10 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 
 		holder = (ViewHolder) element.getTag();
 
-		ListElement elementData = this.elements.get(position);
+		ListElement elementData = this.mElements.get(position);
 
 		holder.sportLabel.setText(elementData.sport);
-		holder.timeLabel.setText("00:00");
+		holder.timeLabel.setText(elementData.niceTime);
 		holder.team_1Label.setText(elementData.team1);
 		holder.team_2Label.setText(elementData.team2);
 		holder.score_1Label.setText(Integer.toString(elementData.score1));
@@ -89,4 +89,8 @@ public class ListProvider extends ArrayAdapter<ListElement> {
 
 		return element;
 	}
+
+    public void updateTimes() {
+        notifyDataSetChanged();
+    }
 }
