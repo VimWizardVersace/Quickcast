@@ -7,7 +7,7 @@ var result = {};
 
 //Interval of request. Please keep this large until we're in production <3
 //Value is in ms
-var interval = 80000;
+var interval = 10000;
 
 
 var options = {
@@ -70,6 +70,8 @@ function getData(){
 
 //Initial request for testing purposes.
 getData();
+var collection = db.get('Live');
+collection.insert({});
 setInterval(function(){
 	getData();
 
