@@ -33,6 +33,8 @@ updateDB = function(response) {
 	response.on('end', function(){
 		data = JSON.parse(string);
 		games = data.result.games;
+		var games_json = {};
+
 		// Here we will ignore all games that are not of league_tier 3.
 		for(var i = 0; i < games.length; i++){
 			// console.log(games[i]);
@@ -43,6 +45,12 @@ updateDB = function(response) {
 				i--;
 			}
 		}
+
+		// copy to a json obc with the keys being lobby ID
+		for(var i = 0; i < games.length; i++){
+			games_json[games[i].lobby_id] = games[i];
+		}
+
 		// Great. Now games should contain only teams that we actually care about! What a concept.
 		// Now we go and update the livegame object.
 		var collection = db.get('Live');
@@ -50,7 +58,7 @@ updateDB = function(response) {
 			First parameter: Objects to update (There should only ever be one Live object)
 			Second: Set the dotagames object equal to what we found!
 		*/
-		collection.update({}, {$set : {dotagames : games}}, function(err, doc){
+		collection.update({}, {$set : {dotagames : games_json}}, function(err, doc){
 			if(err){
 				console.log("Woah there! error!");
 			} else {
