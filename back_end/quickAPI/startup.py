@@ -12,14 +12,16 @@ def startdb(dbpath, OS):
 	if "linux" in OS:
 		subprocess.call(['gnome-terminal -x mongod --dbpath '+dbpath], shell=True)
 	elif "win" in OS:
-		pass 
+		proc = subprocess.Popen('cmd.exe', stdin = subprocess.PIPE, stdout = subprocess.PIPE)
+		stdout, stderr = proc.communicate("mongod --dbpath"+dbpath)
 
 def startsh(OS):
-	print "Starting mongo shell just 4 u"
+	print "Starting mongo shell"
 	if "linux" in OS:
 		subprocess.call(['gnome-terminal -x mongo'], shell=True)
 	elif "win" in OS:
-		pass
+		proc = subprocess.Popen('cmd.exe', stdin = subprocess.PIPE, stdout = subprocess.PIPE)
+		stdout, stderr = proc.communicate("mongod")
 
 def startapp(OS):
 	print "Starting app"
