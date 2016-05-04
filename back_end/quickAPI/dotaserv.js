@@ -58,18 +58,21 @@ updateDB = function(response) {
 			First parameter: Objects to update (There should only ever be one Live object)
 			Second: Set the dotagames object equal to what we found!
 		*/
-		for(var lobby_id in games_json){
-			console.log(lobby_id);
-			var update_with = {};
+		var update_with = {};
+		
+		for (var lobby_id in games_json) {
 			update_with[lobby_id] = games_json[lobby_id];
-			collection.update({}, {$set : update_with}, function(err, doc){
-				if(err){
-					console.log("Woah there! error!");
-				} else {
-					console.log("Updated succesfully");
-				}
-			} );
 		}
+
+		/* keep the dotagames array, allows us to have a lolgames and csgames array in the future */
+		collection.update({}, {$set : {dotagames: update_with}}, function(err, doc){
+			if(err){
+				console.log("Woah there! error!");
+			} else {
+				console.log("Updated succesfully");
+			}
+		} );
+
 		var lastqueried = Date.now();
 
 
