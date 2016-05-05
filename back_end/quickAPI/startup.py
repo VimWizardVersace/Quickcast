@@ -28,14 +28,16 @@ def startapp(OS):
 	if "linux" in OS:
 		subprocess.call(['gnome-terminal -x npm start &'], shell=True)
 	elif "win" in OS:
-		pass
+		proc = subprocess.Popen('cmd.exe', stdin = subprocess.PIPE, stdout = subprocess.PIPE)
+		stdout, stderr = proc.communicate("npm start")
 
 def startsentinel(OS):
 	print "Starting collecting data"
 	if "linux" in OS:
 		subprocess.call(['gnome-terminal -x node dotaserv.js'], shell=True)
 	elif "win" in OS:
-		pass
+		proc = subprocess.Popen('cmd.exe', stdin = subprocess.PIPE, stdout = subprocess.PIPE)
+		stdout, stderr = proc.communicate("node dotaserv.js")
 
 with open("quickdb.conf", 'r') as f:
 	OS = sys.platform
