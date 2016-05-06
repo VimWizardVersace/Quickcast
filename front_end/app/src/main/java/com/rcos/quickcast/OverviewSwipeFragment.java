@@ -21,8 +21,6 @@ import java.util.ArrayList;
  * Created by unonu on 5/6/16.
  */
 public class OverviewSwipeFragment extends ListFragment {
-	private OverviewListFragment mFragment;
-	private Bundle mArgs;
 	private SwipeRefreshLayout mSwipeRefreshLayout;
 	//private int sortMethod;
 	private ArrayList<String> mFilters;
@@ -30,8 +28,6 @@ public class OverviewSwipeFragment extends ListFragment {
 	private ListProvider mListProvider;
 	private Handler mHandler;
 	private Runnable mUpdateMatchTimers;
-//	private TextView mEmptyText;
-
 
 	public OverviewSwipeFragment() {
 		//sortMethod = 1;
@@ -45,15 +41,12 @@ public class OverviewSwipeFragment extends ListFragment {
 							 Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_overview_swipe, container, false);
 
-//		mEmptyText = (TextView) rootView.findViewById(R.id.empty_text);
 		mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
 		mSwipeRefreshLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
 			@Override
 			public void onRefresh() {
-				if (mFragment != null) {
 					((HubActivity) getActivity()).updateOverviewList();
-					update(mArgs != null ? mArgs : getArguments());
-				}
+					update(getArguments());
 			}
 		});
 		return rootView;
@@ -80,6 +73,7 @@ public class OverviewSwipeFragment extends ListFragment {
 		intent.putExtra("team2", element.team2);
 		intent.putExtra("score1", element.score1);
 		intent.putExtra("score2", element.score2);
+		intent.putExtra("requestURL", getArguments().getString("requestURL"));
 
 		mHandler.removeCallbacks(mUpdateMatchTimers);
 		startActivity(intent);

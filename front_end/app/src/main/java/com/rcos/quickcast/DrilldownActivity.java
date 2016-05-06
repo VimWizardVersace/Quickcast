@@ -16,11 +16,15 @@ public class DrilldownActivity extends AppCompatActivity {
 
     private String mMatchID;
     private String mSport;
-    private DrilldownListFragment mListFragment;
+    private DrilldownSwipeFragment mListFragment;
     private String mTeamUno;
     private String mTeamDos;
     private int mScoreUno;
     private int mScoreDos;
+
+	public DrilldownActivity() {
+		mListFragment = new DrilldownSwipeFragment();
+	}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +40,20 @@ public class DrilldownActivity extends AppCompatActivity {
         mScoreUno = args.getInt("score1");
         mScoreDos = args.getInt("score2");
 
-        FragmentManager fragmentManager = getFragmentManager();
-        mListFragment = (DrilldownListFragment) fragmentManager.findFragmentById(R.id.drilldown_list);
-        mListFragment.setDetails(mSport, mMatchID);
+		Bundle fragArgs = new Bundle();
+		fragArgs.putString("requestURL",args.getString("requestURL","localhost"));
+		mListFragment.setArguments(fragArgs);
+		mListFragment.setDetails(mSport, mMatchID);
 
-        // Set up action bar.
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+		// Set up action bar.
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
 
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View toolbarView = inflater.inflate(R.layout.drilldown_toolbar, null);
+		LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		getFragmentManager().beginTransaction().replace(R.id.drilldown_container, mListFragment).commit();
+
+		View toolbarView = inflater.inflate(R.layout.drilldown_toolbar, null);
 
         TextView v = (TextView) toolbarView.findViewById(R.id.match_label);
         v.setText(String.format("Match ID: %s", mMatchID));

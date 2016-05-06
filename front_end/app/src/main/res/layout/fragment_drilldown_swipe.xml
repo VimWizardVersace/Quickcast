@@ -5,11 +5,17 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/drilldown_list"
-              tools:context=".DrilldownListFragment">
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@android:id/list"/>
+              tools:context=".DrilldownSwipeFragment">
+	<android.support.v4.widget.SwipeRefreshLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/swipe_refresh_drilldown">
+		<ListView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@android:id/list"/>
+
+	</android.support.v4.widget.SwipeRefreshLayout>
 
     <TextView
         android:id="@android:id/empty"

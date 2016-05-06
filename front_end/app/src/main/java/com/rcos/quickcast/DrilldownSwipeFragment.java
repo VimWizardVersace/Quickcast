@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 /**
  * Created by unonu on 3/24/16.
  */
-public class DrilldownListFragment extends ListFragment {
+public class DrilldownSwipeFragment extends ListFragment {
 
     private ArrayList<DrilldownElement> mElements;
     private DrilldownProvider mDrilldownProvider;
@@ -38,23 +39,28 @@ public class DrilldownListFragment extends ListFragment {
     private String mMatchID;
     private String mRequestURL;
     private String mSport;
-    private Context mContext;
+	private SwipeRefreshLayout mSwipeRefreshLayout;
 
-    public DrilldownListFragment( ) {
+    public DrilldownSwipeFragment( ) {
         mElements = new ArrayList<>();
         mMatchID = "";
-        mRequestURL = "http://quickcast.farkinator.c9users.io";
         mSport = "unknown";
         mJSONData = null;
-        mContext = getContext();
     }
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_drilldown_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_drilldown_swipe, container, false);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-        mRequestURL = sharedPreferences.getString("server", "");
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        mRequestURL = sharedPreferences.getString("server", "localhost");
+		mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_drilldown);
+		mSwipeRefreshLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+					makeRequest();
+			}
+		});
         return rootView;
     }
 
@@ -65,19 +71,17 @@ public class DrilldownListFragment extends ListFragment {
 
 		// Construct the Provider
         mDrilldownProvider = new DrilldownProvider(getActivity(), mElements);
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+		mRequestURL = sp.getString("server","localhost");
 
 		setListAdapter(mDrilldownProvider);
 	}
 
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-        //...
-	}
-
     private void makeRequest() {
+
         RequestQueue mRequestQueue;
         // Instantiate the cache
-        Cache cache = new DiskBasedCache(mContext.getCacheDir(), 1024 * 1024); // 1MB cap
+        Cache cache = new DiskBasedCache(getContext().getCacheDir(), 1024 * 1024); // 1MB cap
         // Set up the network to use HttpURLConnection as the HTTP client.
         Network network = new BasicNetwork(new HurlStack());
         // Instantiate the RequestQueue with the cache and network.
@@ -122,6 +126,7 @@ public class DrilldownListFragment extends ListFragment {
                 break;
             default:
         }
+		mSwipeRefreshLayout.setRefreshing(false);
     }
 
     public void setDetails(String sport, String matchID) {

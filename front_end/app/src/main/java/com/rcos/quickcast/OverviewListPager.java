@@ -240,6 +240,7 @@ public class OverviewListPager extends Fragment {
             if (f != null ) {
                 Bundle args = new Bundle();
                 args.putParcelableArrayList("data", elements);
+				args.putString("requestURL", mRequestURL);
 
                 ArrayList<String> filter = new ArrayList<>();
                 switch (i) {
