@@ -7,7 +7,7 @@ var result = {};
 
 //Interval of request. Please keep this large until we're in production <3
 //Value is in ms
-var interval = 80000;
+var interval = 10000;
 
 
 var options = {
@@ -33,6 +33,8 @@ updateDB = function(response) {
 	response.on('end', function(){
 		data = JSON.parse(string);
 		games = data.result.games;
+		var games_json = {};
+
 		// Here we will ignore all games that are not of league_tier 3.
 		for(var i = 0; i < games.length; i++){
 			// console.log(games[i]);
@@ -43,6 +45,12 @@ updateDB = function(response) {
 				i--;
 			}
 		}
+
+		// copy to a json obc with the keys being lobby ID
+		for(var i = 0; i < games.length; i++){
+			games_json[games[i].lobby_id] = games[i];
+		}
+
 		// Great. Now games should contain only teams that we actually care about! What a concept.
 		// Now we go and update the livegame object.
 		var collection = db.get('Live');
@@ -50,13 +58,21 @@ updateDB = function(response) {
 			First parameter: Objects to update (There should only ever be one Live object)
 			Second: Set the dotagames object equal to what we found!
 		*/
-		collection.update({}, {$set : {dotagames : games}}, function(err, doc){
+		var update_with = {};
+		
+		for (var lobby_id in games_json) {
+			update_with[lobby_id] = games_json[lobby_id];
+		}
+
+		/* keep the dotagames array, allows us to have a lolgames and csgames array in the future */
+		collection.update({}, {$set : {dotagames: update_with}}, function(err, doc){
 			if(err){
 				console.log("Woah there! error!");
 			} else {
 				console.log("Updated succesfully");
 			}
-		});
+		} );
+
 		var lastqueried = Date.now();
 
 
@@ -70,6 +86,10 @@ function getData(){
 
 //Initial request for testing purposes.
 getData();
+var collection = db.get('Live');
+var history = db.get('History');
+history.insert({});
+collection.insert({});
 setInterval(function(){
 	getData();
 
