@@ -28,11 +28,13 @@ router.get('/live', function(req, res, next){
 				} else if (currentgame.series_type = 2){
 					totalgames = 5;
 				}
+				var url = "http://api.steampowered.com/ISteamRemoteStorage/GetUGCFileDetails/v1/?key=4D993671C8B8DA5C9A9F6D4377D6167C&appid=570&ugcid="
 				simpleresponse.push({
 					"matchid" : currentgame.match_id, 
 					"series" : [currentgame.dire_series_wins, currentgame.radiant_series_wins,totalgames],
 					"score" : [currentgame.scoreboard.dire.score, currentgame.scoreboard.radiant.score],
-					"teams" : [currentgame.dire_team.team_name, currentgame.dire_team.team_id, currentgame.radiant_team.team_name, currentgame.radiant_team.team_id],
+					"teams" : [currentgame.dire_team.team_name, currentgame.dire_team.team_id, url+currentgame.dire_team.team_logo, 
+								currentgame.radiant_team.team_name, currentgame.radiant_team.team_id, url+currentgame.radiant_team.team_logo],
 					"duration" : currentgame.scoreboard.duration
 				});
 			}
