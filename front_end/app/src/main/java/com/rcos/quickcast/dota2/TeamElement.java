@@ -44,19 +44,21 @@ public class TeamElement extends DrilldownElement {
         //we're guaranteed to have 10 players with id 0 or 1, so we do this:
         int j = 0;
         for (int i=0; i < 10; i++) {
-            JSONObject player = (JSONObject) players.get(j);
-
             while (j > -1) {
+                JSONObject player = (JSONObject) players.get(j);
                 if (player.getInt("team") == 0){
+                    Log.d("QUICKCAST!!!!", "found a player " + j + player.getString("name"));
                     radiantPlayers.add(player.getString("name"));
                     break;
                 }
                 else if (player.getInt("team") == 1) {
+                    Log.d("QUICKCAST!!!!", "found a player " + j + player.getString("name"));
                     direPlayers.add(player.getString("name"));
                     break;
                 }
                 j++;
             }
+            j++;
         }
         Log.d("QUICKCAST!!!!", "constructed team element");
     }

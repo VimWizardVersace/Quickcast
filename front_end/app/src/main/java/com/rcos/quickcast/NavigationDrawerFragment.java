@@ -3,7 +3,7 @@ package com.rcos.quickcast;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -106,26 +106,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section2),
                         getString(R.string.title_section3),
                         getString(R.string.title_section4),
-//                        getString(R.string.title_section5),
-//                        getString(R.string.title_section6),
                 }));
-//		mDrawerFooter = (ListView) rootView.findViewById(R.id.footer);
-//		mDrawerFooter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                selectItem(position);
-//            }
-//        });
-//        mDrawerFooter.setAdapter(new ArrayAdapter<String>(
-//                getContext(),
-//                android.R.layout.simple_list_item_activated_1,
-//                android.R.id.text1,
-//                new String[]{
-//                        getString(R.string.title_section5),
-//                        getString(R.string.title_section6),
-//                }));
-//		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-//        mDrawerFooter.setItemChecked(mCurrentSelectedPosition, true);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return rootView;
 	}
@@ -163,8 +144,8 @@ public class NavigationDrawerFragment extends Fragment {
 				if (!isAdded()) {
 					return;
 				}
-                getActivity().setTitle( getCurrentTitle() );
-				getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+//                getActivity().setTitle( getCurrentTitle() );
+				getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
 			}
 
 			@Override
@@ -183,7 +164,7 @@ public class NavigationDrawerFragment extends Fragment {
 					sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
 				}
                 getActionBar().setTitle("Categories");
-				getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+				getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
 			}
 		};
 
@@ -210,13 +191,15 @@ public class NavigationDrawerFragment extends Fragment {
 	}
 
 	public void selectItem(int position) {
+		if (position < 0) {
+			mDrawerListView.setItemChecked(mCurrentSelectedPosition, false);
+			return;
+		}
 		mCurrentSelectedPosition = position;
 		if (mDrawerListView != null) {
 			mDrawerListView.setItemChecked(position, true);
+			getActivity().setTitle(getCurrentTitle());
 		}
-//        if (mDrawerFooter != null) {
-//            mDrawerFooter.setItemChecked(position, true);
-//        }
 		if (mDrawerLayout != null) {
 			mDrawerLayout.closeDrawer(mFragmentContainerView);
 		}
@@ -311,10 +294,6 @@ public class NavigationDrawerFragment extends Fragment {
                 return getString(R.string.title_section3);
             case 3:
                 return getString(R.string.title_section4);
-            case 4:
-                return getString(R.string.title_section5);
-            case 5:
-                return getString(R.string.title_section6);
             default:
                 return "???";
         }
