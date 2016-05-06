@@ -40,7 +40,7 @@ public class OverviewListPager extends Fragment {
     private SparseArray<OverviewListFragment> fragments;
 
     public OverviewListPager() {
-		mRequestURL = "http://quickcast.farkinator.c9users.io";
+		mRequestURL = "http://localhost";
         elements = new ArrayList<>();
         fragments = new SparseArray<>();
 	}
@@ -76,10 +76,6 @@ public class OverviewListPager extends Fragment {
             }
         });
 
-//        PagerTitleStrip pagerTitleStrip = (PagerTitleStrip)rootView.findViewById(R.id.pager_title_strip);
-//        pagerTitleStrip.refreshDrawableState();
-
-
 		return rootView;
 	}
 
@@ -99,6 +95,10 @@ public class OverviewListPager extends Fragment {
         setCurrentItem(args.getInt("position",0));
         mRequestURL = args.getString("requestURL");
     }
+
+	public void updateURL() {
+        mRequestURL = getArguments().getString("requestURL");
+	}
 
 	private class OverviewListAdapter extends FragmentStatePagerAdapter {
 		public OverviewListAdapter(FragmentManager fm) {

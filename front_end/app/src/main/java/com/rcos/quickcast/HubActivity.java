@@ -81,9 +81,9 @@ public class HubActivity extends AppCompatActivity
         Fragment fragment;
         Bundle args = new Bundle();
 		// update the main content by replacing fragments
-            if (refresh) {
-                args.putString("requestURL", mRequestURL);
-                args.putInt("position", position);
+		args.putString("requestURL", mRequestURL);
+		args.putInt("position", position);
+		if (refresh) {
                 fragment = new OverviewListPager();
                 fragment.setArguments(args);
             } else {
@@ -91,7 +91,7 @@ public class HubActivity extends AppCompatActivity
                 ((OverviewListPager) fragment).setCurrentItem(position);
             }
             refresh = false;
-
+		((OverviewListPager) fragment).updateURL();
 		fragmentManager.beginTransaction()
 						.replace(R.id.container, fragment)
 						.commit();
@@ -103,12 +103,15 @@ public class HubActivity extends AppCompatActivity
         fragmentManager.beginTransaction()
 						.replace(R.id.container, fragment)
 						.commit();
+		setTitle("Settings");
+		mNavigationDrawerFragment.selectItem(-1);
         mDrawerLayout.closeDrawers();
         refresh = true;
     }
 
 	public void updatePreferences() {
 		mRequestURL = mPreferences.getString("server","localhost");
+
 	}
 
     public void showAbout( View view ) {
@@ -117,6 +120,8 @@ public class HubActivity extends AppCompatActivity
         fragmentManager.beginTransaction()
 						.replace(R.id.container, fragment)
 						.commit();
+		setTitle("About");
+		mNavigationDrawerFragment.selectItem(-1);
         mDrawerLayout.closeDrawers();
         refresh = true;
     }
