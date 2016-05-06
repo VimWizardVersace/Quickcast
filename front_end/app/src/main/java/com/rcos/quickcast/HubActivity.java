@@ -30,14 +30,15 @@ public class HubActivity extends AppCompatActivity
 	private CharSequence mTitle;
 	private String mRequestURL;
     private Boolean refresh = true;
+	private SharedPreferences mPreferences;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hub);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRequestURL = sharedPreferences.getString("server", "");
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        updatePreferences();
         mNavigationDrawerFragment = (NavigationDrawerFragment)
 				getFragmentManager().findFragmentById(R.id.navigation_drawer);
 
@@ -61,6 +62,7 @@ public class HubActivity extends AppCompatActivity
 
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+				updatePreferences();
             }
         };
 
@@ -104,6 +106,10 @@ public class HubActivity extends AppCompatActivity
         mDrawerLayout.closeDrawers();
         refresh = true;
     }
+
+	public void updatePreferences() {
+		mRequestURL = mPreferences.getString("server","localhost");
+	}
 
     public void showAbout( View view ) {
 		FragmentManager fragmentManager = getFragmentManager();
