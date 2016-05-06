@@ -1,11 +1,10 @@
 package com.rcos.quickcast;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.ListFragment;
+import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.SparseArray;
@@ -22,36 +21,35 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class OverviewListPager extends Fragment {
 
 	private String mRequestURL;
 	private ArrayList<ListElement> elements;
-    private OverviewListAdapter pagerAdapter;
+    private OverviewSwipeAdapter pagerAdapter;
 	public ViewPager listPager;
-    private SparseArray<OverviewListFragment> fragments;
+    private SparseArray<OverviewSwipeFragment> mFragments;
+	private int mCurrentPosition;
 
     public OverviewListPager() {
-		mRequestURL = "http://quickcast.farkinator.c9users.io";
+		mRequestURL = "http://localhost";
         elements = new ArrayList<>();
-        fragments = new SparseArray<>();
+        mFragments = new SparseArray<>();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-        mRequestURL = getArguments().getString("requestURL");
+        mRequestURL = getArguments().getString("requestURL", mRequestURL);
 
 		View rootView = inflater.inflate(R.layout.pager_overview_list, container, false);
-        pagerAdapter = new OverviewListAdapter(getFragmentManager());
+        pagerAdapter = new OverviewSwipeAdapter(getFragmentManager());
         pagerAdapter.notifyDataSetChanged();
 
         listPager = (ViewPager)rootView.findViewById(R.id.pager) ;
@@ -68,17 +66,14 @@ public class OverviewListPager extends Fragment {
                 HubActivity ha = (HubActivity) getActivity();
                 ha.setTitle( pagerAdapter.getPageTitle(position) );
                 ha.selectNavigationItem(position);
+				mCurrentPosition = position;
             }
 
             @Override
-            public void onPageScrollStateChanged(int position) {
-
+            public void onPageScrollStateChanged(int state) {
+				mFragments.get(mCurrentPosition).swipeRefreshEnabled(state == ViewPager.SCROLL_STATE_IDLE);
             }
         });
-
-//        PagerTitleStrip pagerTitleStrip = (PagerTitleStrip)rootView.findViewById(R.id.pager_title_strip);
-//        pagerTitleStrip.refreshDrawableState();
-
 
 		return rootView;
 	}
@@ -97,11 +92,15 @@ public class OverviewListPager extends Fragment {
         super.onResume();
         Bundle args = getArguments();
         setCurrentItem(args.getInt("position",0));
-        mRequestURL = args.getString("requestURL");
+        mRequestURL = args.getString("requestURL", mRequestURL);
     }
 
-	private class OverviewListAdapter extends FragmentStatePagerAdapter {
-		public OverviewListAdapter(FragmentManager fm) {
+	public void updateURL() {
+        mRequestURL = getArguments().getString("requestURL", mRequestURL);
+	}
+
+	private class OverviewSwipeAdapter extends FragmentStatePagerAdapter {
+		public OverviewSwipeAdapter (FragmentManager fm) {
 			super(fm);
 		}
 
@@ -111,9 +110,10 @@ public class OverviewListPager extends Fragment {
 		}
 
 		@Override
-		public ListFragment getItem(int position) {
-			OverviewListFragment fragment = new OverviewListFragment();
+		public OverviewSwipeFragment getItem(int position) {
+			OverviewSwipeFragment fragment = new OverviewSwipeFragment();
             Bundle args = new Bundle();
+
             args.putParcelableArrayList("data", elements);
                 Log.d(" QUICKCAST!!!!", "len o elements " + elements.size());
             for (ListElement e : elements) {
@@ -141,13 +141,13 @@ public class OverviewListPager extends Fragment {
                     args.putString("filter", "");
             }
 			fragment.setArguments(args);
-            fragments.put(position, fragment);
+            mFragments.put(position, fragment);
 			return fragment;
 		}
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            fragments.remove(position);
+            mFragments.remove(position);
             super.destroyItem(container, position, object);
         }
 
@@ -167,12 +167,15 @@ public class OverviewListPager extends Fragment {
             }
         }
 
-        public OverviewListFragment getFragment(int position) {
-            return fragments.get(position);
+        public OverviewSwipeFragment getFragment(int position) {
+            return mFragments.get(position);
         }
 	}
 
 	public void makeRequest() {
+		// Make sure we're up to date
+		updateURL();
+
         RequestQueue mRequestQueue;
 
         // Instantiate the cache
@@ -203,7 +206,7 @@ public class OverviewListPager extends Fragment {
 				Log.d(" QUICKCAST!!!!", "Bad response from makeRequest.");
             }
 		});
-        Log.d(" QUICKCAST!!!!", "finished making request to " + mRequestURL + "live");
+        Log.d(" QUICKCAST!!!!", "finished making request to " + mRequestURL + "/live");
         mRequestQueue.add(request);
 	}
 
@@ -228,16 +231,16 @@ public class OverviewListPager extends Fragment {
                 x =  new ListElement( (JSONObject) matches.get(j) );
             } catch (JSONException e) {
                 x = null;
-                e.printStackTrace();
             }
         }
 
         pagerAdapter.notifyDataSetChanged();
-        for (int i=0; i < fragments.size(); i++) {
-            OverviewListFragment f = pagerAdapter.getFragment(i);
+        for (int i = 0; i < mFragments.size(); i++) {
+            OverviewSwipeFragment f = pagerAdapter.getFragment(i);
             if (f != null ) {
                 Bundle args = new Bundle();
                 args.putParcelableArrayList("data", elements);
+				args.putString("requestURL", mRequestURL);
 
                 ArrayList<String> filter = new ArrayList<>();
                 switch (i) {
@@ -262,6 +265,15 @@ public class OverviewListPager extends Fragment {
                 f.update(args);
             }
         }
+
+		for (int i = 0; i < mFragments.size(); i++) {
+			OverviewSwipeFragment f = mFragments.get(i);
+			if (f != null) {
+				f.setRefreshing(false);
+				Log.d("QUIECKAADF","stop refresh...");
+			}
+		}
+
         return elements.size();
 	}
 

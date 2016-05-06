@@ -2,6 +2,7 @@ package com.rcos.quickcast;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.SystemClock;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +42,9 @@ public class ListElement implements Parcelable {
 	public String teamID1;
 	public String team2;
 	public String teamID2;
+    public String niceTime;
     public Map<String, String> sorts;
+    public long refTime;
 
 	public ListElement(JSONObject details) throws JSONException {
 
@@ -63,6 +66,7 @@ public class ListElement implements Parcelable {
 		teamID1		= teams.optString(1, "b");
 		team2		= teams.optString(2, "c");
 		teamID2		= teams.optString(3, "d");
+        niceTime    = "00:00";
 
         sorts = new HashMap<>();
         sorts.put("sport", sport);
@@ -71,6 +75,7 @@ public class ListElement implements Parcelable {
         sorts.put("teamID2", teamID2);
         sorts.put("finished", endStamp == -1 ? "false" : "true");
 
+        refTime = SystemClock.uptimeMillis();
 	}
 
 
@@ -100,12 +105,14 @@ public class ListElement implements Parcelable {
 		teamID1	    = in.readString();
 		team2 		= in.readString();
 		teamID2	    = in.readString();
+        refTime     = in.readLong();
 
         sorts.put("sport", sport);
         sorts.put("duration", Integer.toString(duration));
         sorts.put("teamID1", teamID1);
         sorts.put("teamID2", teamID2);
         sorts.put("finished", endStamp == -1 ? "false" : "true");
+
 
 	}
 	public int describeContents() {
@@ -124,5 +131,6 @@ public class ListElement implements Parcelable {
 		dest.writeString(teamID1);
 		dest.writeString(team2);
 		dest.writeString(teamID2);
+        dest.writeLong(refTime);
 	}
 }
