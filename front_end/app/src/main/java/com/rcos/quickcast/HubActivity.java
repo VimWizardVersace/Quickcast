@@ -32,13 +32,16 @@ public class HubActivity extends AppCompatActivity
     private Boolean refresh = true;
 	private SharedPreferences mPreferences;
 
+	private OverviewListPager mOverviewListPager;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		updatePreferences();
+
 		setContentView(R.layout.activity_hub);
 
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        updatePreferences();
         mNavigationDrawerFragment = (NavigationDrawerFragment)
 				getFragmentManager().findFragmentById(R.id.navigation_drawer);
 
@@ -78,23 +81,27 @@ public class HubActivity extends AppCompatActivity
 	public void onNavigationDrawerItemSelected(int position) {
 		FragmentManager fragmentManager = getFragmentManager();
 
-        Fragment fragment;
         Bundle args = new Bundle();
 		// update the main content by replacing fragments
 		args.putString("requestURL", mRequestURL);
 		args.putInt("position", position);
 		if (refresh) {
-                fragment = new OverviewListPager();
-                fragment.setArguments(args);
-            } else {
-                fragment = fragmentManager.findFragmentById(R.id.container);
-                ((OverviewListPager) fragment).setCurrentItem(position);
-            }
-            refresh = false;
-		((OverviewListPager) fragment).updateURL();
+			mOverviewListPager = new OverviewListPager();
+			mOverviewListPager.setArguments(args);
+		} else {
+			mOverviewListPager = (OverviewListPager) fragmentManager.findFragmentById(R.id.container);
+			mOverviewListPager.setCurrentItem(position);
+		}
+		refresh = false;
+		mOverviewListPager.updateURL();
 		fragmentManager.beginTransaction()
-						.replace(R.id.container, fragment)
+						.replace(R.id.container, mOverviewListPager)
 						.commit();
+	}
+
+	public void updateOverviewList(){
+		if (mOverviewListPager != null)
+			mOverviewListPager.makeRequest();
 	}
 
     public void showPreferences(View view ) {
@@ -111,7 +118,6 @@ public class HubActivity extends AppCompatActivity
 
 	public void updatePreferences() {
 		mRequestURL = mPreferences.getString("server","localhost");
-
 	}
 
     public void showAbout( View view ) {

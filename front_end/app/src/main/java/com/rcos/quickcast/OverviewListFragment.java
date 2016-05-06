@@ -33,50 +33,6 @@ public class OverviewListFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_overview_list, container, false);
-        Bundle args = getArguments();
-        mFilters = args.getStringArrayList("filter");
-        ArrayList<ListElement> all = args.getParcelableArrayList("data");
-
-        if (mFilters == null) mFilters = new ArrayList<>();
-        if (all == null) all = new ArrayList<>();
-
-        mElements.clear();
-        for ( ListElement element: all) {
-//            Log.d(" QUICKCAST!!!!", "Added match " + element.matchID);
-            for (int i=0; i < mFilters.size(); i += 2) {
-                if (element.sorts.get( mFilters.get(i) ).equals(mFilters.get(i+1)) ) {
-                    mElements.add(element);
-                    break;
-                }
-            }
-        }
-
-        mUpdateMatchTimers = new Runnable() {
-            @Override
-            public void run() {
-                long millis = SystemClock.uptimeMillis();
-
-                for (ListElement element : mElements) {
-                    if (element.duration > 0) {
-                        double curTime = (millis-element.refTime)/1000.;
-                        int seconds = (int) (element.duration+curTime)%60;
-                        int minutes = (int) (element.duration+curTime)/60;
-                        if (seconds < 10)
-                            element.niceTime = String.format("%d:0%d", minutes, seconds);
-                        else
-                            element.niceTime = String.format("%d:%d", minutes, seconds);
-                    }
-                }
-
-                mListProvider.updateTimes();
-                mHandler.postDelayed(this, 200);
-            }
-        };
-
-
-        mHandler.removeCallbacks(mUpdateMatchTimers);
-        mHandler.postDelayed(mUpdateMatchTimers, 100);
-        Log.d(" QUICKCAST!!!!", "Made new OLF");
 		return rootView;
 	}
 
@@ -104,6 +60,52 @@ public class OverviewListFragment extends ListFragment {
         mHandler.removeCallbacks(mUpdateMatchTimers);
 		startActivity(intent);
         // finish?
+	}
+
+	public void init() {
+		Bundle args = getArguments();
+		mFilters = args.getStringArrayList("filter");
+		ArrayList<ListElement> all = args.getParcelableArrayList("data");
+//
+		if (mFilters == null) mFilters = new ArrayList<>();
+		if (all == null) all = new ArrayList<>();
+
+		mElements.clear();
+		for ( ListElement element: all) {
+//            Log.d(" QUICKCAST!!!!", "Added match " + element.matchID);
+			for (int i=0; i < mFilters.size(); i += 2) {
+				if (element.sorts.get( mFilters.get(i) ).equals(mFilters.get(i+1)) ) {
+					mElements.add(element);
+					break;
+				}
+			}
+		}
+
+		mUpdateMatchTimers = new Runnable() {
+			@Override
+			public void run() {
+				long millis = SystemClock.uptimeMillis();
+
+				for (ListElement element : mElements) {
+					if (element.duration > 0) {
+						double curTime = (millis-element.refTime)/1000.;
+						int seconds = (int) (element.duration+curTime)%60;
+						int minutes = (int) (element.duration+curTime)/60;
+						if (seconds < 10)
+							element.niceTime = String.format("%d:0%d", minutes, seconds);
+						else
+							element.niceTime = String.format("%d:%d", minutes, seconds);
+					}
+				}
+
+				mListProvider.updateTimes();
+				mHandler.postDelayed(this, 200);
+			}
+		};
+
+		mHandler.removeCallbacks(mUpdateMatchTimers);
+		mHandler.postDelayed(mUpdateMatchTimers, 100);
+		Log.d(" QUICKCAST!!!!", "Made new OLF");
 	}
 
     public void update( Bundle args ) {
