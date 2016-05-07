@@ -1,0 +1,173 @@
+[
+  {
+    "matchid": 2345371421,
+    "series": [
+      0,
+      0,
+      3
+    ],
+    "score": [
+      8,
+      12
+    ],
+    "teams": [
+      "Kokinet Gaming - Peru",
+      2833875,
+      "Budys Gaming",
+      2333414
+    ],
+    "duration": 1015.177124
+  },
+  {
+    "matchid": 2345348032,
+    "series": [
+      0,
+      0,
+      3
+    ],
+    "score": [
+      13,
+      17
+    ],
+    "teams": [
+      "FishSquad",
+      2737886,
+      "FireBreathing Duckies",
+      2019895
+    ],
+    "duration": 1420.512451
+  },
+  {
+    "matchid": 2345361224,
+    "series": [
+      0,
+      0,
+      3
+    ],
+    "score": [
+      7,
+      9
+    ],
+    "teams": [
+      "<DanGerous>",
+      2517310,
+      "Seven Friends",
+      2622867
+    ],
+    "duration": 839.794922
+  },
+  {
+    "matchid": 2345377910,
+    "series": [
+      0,
+      0,
+      3
+    ],
+    "score": [
+      0,
+      0
+    ],
+    "teams": [
+      "Willzone",
+      2579151,
+      "CyberGamers(CG)",
+      2779265
+    ],
+    "duration": 0
+  },
+  {
+    "matchid": 2345347201,
+    "series": [
+      0,
+      1,
+      3
+    ],
+    "score": [
+      12,
+      22
+    ],
+    "teams": [
+      "Comment Me",
+      2806345,
+      "Multiple Foam Rats",
+      2777100
+    ],
+    "duration": 1311.654785
+  },
+  {
+    "matchid": 2345340632,
+    "series": [
+      0,
+      0,
+      3
+    ],
+    "score": [
+      24,
+      10
+    ],
+    "teams": [
+      "5Rungz",
+      2594272,
+      "Get Mek'd",
+      2791131
+    ],
+    "duration": 1771.325439
+  },
+  {
+    "matchid": 2345374730,
+    "series": [
+      0,
+      0,
+      3
+    ],
+    "score": [
+      0,
+      0
+    ],
+    "teams": [
+      "Like That Matters",
+      2781609,
+      "Stricken Gaming",
+      2812389
+    ],
+    "duration": 3.099243
+  },
+  {
+    "matchid": 2345378651,
+    "series": [
+      0,
+      0,
+      3
+    ],
+    "score": [
+      0,
+      0
+    ],
+    "teams": [
+      "Transient Reign",
+      1947439,
+      "ayydoto",
+      2631107
+    ],
+    "duration": 0
+  },
+  {
+    "matchid": 2345378506,
+    "series": [
+      1,
+      0,
+      3
+    ],
+    "score": [
+      0,
+      1
+    ],
+    "teams": [
+      "Tr14l & 3rr0r",
+      2037418,
+      "2x2Head",
+      2767543
+    ],
+    "duration": 154.295654
+  }
+]
