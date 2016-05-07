@@ -11,8 +11,11 @@
 import Foundation
 import UIKit
 
-class DOta2Game{
+class Dota2Game{
     var scores: ScoreBoard;
+    init(){
+        
+    }
 }
 
 class ScoreBoard {
@@ -24,5 +27,6 @@ class ScoreBoard {
 }
 
 class Player {
+    
     
 }

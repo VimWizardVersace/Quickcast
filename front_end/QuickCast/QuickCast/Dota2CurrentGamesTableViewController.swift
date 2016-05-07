@@ -8,8 +8,9 @@
 
 import UIKit
 
-class Dota2CurrentGamesTableViewController: UITableViewController {
 
+class Dota2CurrentGamesTableViewController: UITableViewController {
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
