@@ -9,7 +9,7 @@ var result = {};
 //Value is in ms
 var interval = 10000;
 
-
+// TODO: Replace path with keys from quickdb.conf
 var options = {
 	host: 'https://api.steampowered.com',
 	path: '/IDOTA2Match_570/GetLiveLeagueGames/v0001/?key=4D993671C8B8DA5C9A9F6D4377D6167C'
@@ -58,8 +58,11 @@ updateDB = function(response) {
 			First parameter: Objects to update (There should only ever be one Live object)
 			Second: Set the dotagames object equal to what we found!
 		*/
+
+		/*instead of holding as an array, make an object whose properties are lobby_id */
 		var update_with = {};
 		
+		/* iterate through the games json, basically restructuring it into update_with*/
 		for (var lobby_id in games_json) {
 			update_with[lobby_id] = games_json[lobby_id];
 		}
