@@ -28,9 +28,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/r_player_0_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/r_player_0_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -41,9 +42,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/r_player_1_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/r_player_1_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -54,9 +56,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/r_player_2_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/r_player_2_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -67,9 +70,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/r_player_3_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/r_player_3_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -80,9 +84,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/r_player_4_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/r_player_4_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
 
     <TableRow
@@ -109,9 +114,12 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/d_player_0_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/d_player_0_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -122,9 +130,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/d_player_1_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/d_player_1_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -135,9 +144,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/d_player_2_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/d_player_2_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -148,9 +158,10 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/d_player_3_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/d_player_3_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
     <TableRow
         android:layout_height="wrap_content"
@@ -161,8 +172,9 @@
             android:text="unknown"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/d_player_4_hero"
-            android:text="Abadon"
-            android:layout_weight="1"/>
+			android:id="@+id/d_player_4_hero"
+			android:text="Abadon"
+			android:layout_weight="1"
+			android:gravity="right"/>
     </TableRow>
 </TableLayout>
