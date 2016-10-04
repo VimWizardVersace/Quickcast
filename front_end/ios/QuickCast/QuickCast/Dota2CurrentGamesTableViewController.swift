@@ -7,11 +7,17 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 
 class Dota2CurrentGamesTableViewController: UITableViewController {
-        
+    
+    var NumberofRows = 10
+    var games : [Dota2Simple] = []
+    
+    var simpleData = [String]()
+            
     override func viewDidLoad() {
+        parseJSON()
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -30,23 +36,36 @@ class Dota2CurrentGamesTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
+    }
+    
+    func parseJSON(){
+        let path : String = NSBundle.mainBundle().pathForResource("Data/DotaSimpleView", ofType: "json") as String!
+        
+        //change this to URL when getting from server
+        let jsonData = NSData(contentsOfFile: path) as NSData!
+        let parsedJSON = JSON(data: jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        
+        for (index, object) in parsedJSON{
+            let matchid = object["matchid"].stringValue
+            print(matchid)
+        }
+        
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = "hello"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

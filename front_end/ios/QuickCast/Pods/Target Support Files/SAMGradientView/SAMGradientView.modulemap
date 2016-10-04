@@ -1,0 +1,6 @@
+framework module SAMGradientView {
+  umbrella header "SAMGradientView-umbrella.h"
+
+  export *
+  module * { export * }
+}
