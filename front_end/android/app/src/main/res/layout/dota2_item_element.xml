@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp">
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/r_player_0_name"
+            android:text="nk"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:ellipsize="marquee"
+            android:maxLines="1" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+        <TextView
+            android:id="@+id/r_player_0_item1"
+            android:background="@drawable/derp"
+            android:layout_height="36dp"
+            android:layout_width="36dp"/>
+        <TextView
+            android:id="@+id/r_player_0_item2"
+            android:background="@drawable/derp"
+            android:layout_height="36dp"
+            android:layout_width="36dp"/>
+        <TextView
+            android:id="@+id/r_player_0_item3"
+            android:background="@drawable/derp"
+            android:layout_height="36dp"
+            android:layout_width="36dp"/>
+        <TextView
+            android:id="@+id/r_player_0_item4"
+            android:background="@drawable/derp"
+            android:layout_height="36dp"
+            android:layout_width="36dp"/>
+        <TextView
+            android:id="@+id/r_player_0_item5"
+            android:background="@drawable/derp"
+            android:layout_height="36dp"
+            android:layout_width="36dp"/>
+        <TextView
+            android:id="@+id/r_player_0_item6"
+            android:background="@drawable/derp"
+            android:layout_height="36dp"
+            android:layout_width="36dp"
+            android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/r_player_1_name"
+            android:text="ELM59"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:ellipsize="marquee" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/r_player_1_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_1_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_1_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_1_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_1_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_1_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/r_player_2_name"
+            android:text="AYY"
+            android:gravity="center"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:ellipsize="end" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/r_player_2_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_2_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_2_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_2_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_2_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_2_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/r_player_3_name"
+            android:text="nk"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:ellipsize="end" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/r_player_3_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_3_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_3_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_3_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_3_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_3_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/r_player_4_name"
+            android:text="Bret Favre"
+            android:gravity="center"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:ellipsize="end" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/r_player_4_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_4_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_4_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_4_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_4_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/r_player_4_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+
+
+
+
+
+
+
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tableDire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            android:layout_gravity="center_horizontal"/>
+
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/d_player_0_name"
+            android:text="nk"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:ellipsize="marquee"
+            android:singleLine="true" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/d_player_0_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_0_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_0_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_0_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_0_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_0_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/d_player_1_name"
+            android:text="I AM DE BES"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:ellipsize="marquee" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/d_player_1_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_1_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_1_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_1_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_1_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_1_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/d_player_2_name"
+            android:text="nk"
+            android:gravity="center"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:ellipsize="end" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/d_player_2_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_2_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_2_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_2_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_2_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_2_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/d_player_3_name"
+            android:text="nk"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:ellipsize="end" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/d_player_3_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_3_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_3_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_3_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_3_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_3_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/d_player_4_name"
+            android:text="_"
+            android:gravity="center"
+            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:ellipsize="end" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="0">
+
+
+            <TextView
+                android:id="@+id/d_player_4_item1"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_4_item2"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_4_item3"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_4_item4"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_4_item5"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"/>
+            <TextView
+                android:id="@+id/d_player_4_item6"
+                android:background="@drawable/derp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="right" /> </LinearLayout>
+    </TableRow>
+</TableLayout>
