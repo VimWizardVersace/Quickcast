@@ -16,8 +16,9 @@ router.get('/live', function(req, res, next){
 		if(err) return next(err);
 		//There should ONLY ever be one live game object.
 		var simpleresponse = [];
-		for(var i=0; i<livegames[0].dotagames.length; i++){
-			var currentgame = livegames[0].dotagames[i];
+		for(var key in livegames[0].dotagames[0] ){
+			var currentgame = livegames[0].dotagames[0][key];
+			//console.log("Hi there");
 			if(currentgame.scoreboard != null && currentgame.dire_team != null && currentgame.radiant_team != null){
 				var totalgames;
 
@@ -28,7 +29,7 @@ router.get('/live', function(req, res, next){
 				} else if (currentgame.series_type = 2){
 					totalgames = 5;
 				}
-				var url = "http://api.steampowered.com/ISteamRemoteStorage/GetUGCFileDetails/v1/?key=4D993671C8B8DA5C9A9F6D4377D6167C&appid=570&ugcid="
+				//var url = "http://api.steampowered.com/ISteamRemoteStorage/GetUGCFileDetails/v1/?key=4D993671C8B8DA5C9A9F6D4377D6167C&appid=570&ugcid="
 				simpleresponse.push({
 					"matchid" : currentgame.match_id, 
 					"series" : [currentgame.dire_series_wins, currentgame.radiant_series_wins,totalgames],
@@ -37,6 +38,7 @@ router.get('/live', function(req, res, next){
 								currentgame.radiant_team.team_name, currentgame.radiant_team.team_id, url+currentgame.radiant_team.team_logo],
 					"duration" : currentgame.scoreboard.duration
 				});
+				//console.log("Hello?");
 			}
 		}
 
