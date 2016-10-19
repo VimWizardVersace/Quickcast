@@ -34,8 +34,8 @@ router.get('/live', function(req, res, next){
 					"matchid" : currentgame.match_id, 
 					"series" : [currentgame.dire_series_wins, currentgame.radiant_series_wins,totalgames],
 					"score" : [currentgame.scoreboard.dire.score, currentgame.scoreboard.radiant.score],
-					"teams" : [currentgame.dire_team.team_name, currentgame.dire_team.team_id, url+currentgame.dire_team.team_logo, 
-								currentgame.radiant_team.team_name, currentgame.radiant_team.team_id, url+currentgame.radiant_team.team_logo],
+					"teams" : [currentgame.dire_team.team_name, currentgame.dire_team.team_id, currentgame.dire_team.team_logo, 
+								currentgame.radiant_team.team_name, currentgame.radiant_team.team_id, currentgame.radiant_team.team_logo],
 					"duration" : currentgame.scoreboard.duration
 				});
 				//console.log("Hello?");
