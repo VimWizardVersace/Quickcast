@@ -72,8 +72,8 @@ updateDB = function(response) {
 			if(err){
 				console.log("Woah there! error!");
 			} else {
-				console.log(update_with);
-				console.log("Updated succesfully");
+				//console.log(update_with);
+				//console.log("Updated succesfully");
 			}
 		} );
 
