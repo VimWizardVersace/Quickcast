@@ -19,8 +19,9 @@ router.get('/live', function(req, res, next){
 		if(err) return next(err);
 		var simpleresponse = [];
 		//This is how we should traverse
-		for(var i=0; i<livegames.dotagames.length; i++){
-			var currentgame = livegames.dotagames[i];
+		console.log(livegames);
+		for(var key in livegames.dotagames[0]){
+			var currentgame = livegames.dotagames[0][key];
 			if(currentgame.scoreboard != null && currentgame.dire_team != null && currentgame.radiant_team != null){
 				var totalgames;
 				//Series type 0 = best of 1, and so on.
@@ -32,7 +33,9 @@ router.get('/live', function(req, res, next){
 					totalgames = 5;
 				}
 				//See the help document on my blog for demystifying the dota 2 web api.
+					
 				simpleresponse.push({
+					"sport" : "DOTA2",
 					"matchid" : currentgame.match_id, 
 					"series" : [currentgame.dire_series_wins, currentgame.radiant_series_wins,totalgames],
 					"score" : [currentgame.scoreboard.dire.score, currentgame.scoreboard.radiant.score],
