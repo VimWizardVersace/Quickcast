@@ -82,3 +82,14 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/Alamofire.framework"
+  install_framework "Pods/SAMGradientView.framework"
+  install_framework "Pods/SwiftyJSON.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/Alamofire.framework"
+  install_framework "Pods/SAMGradientView.framework"
+  install_framework "Pods/SwiftyJSON.framework"
+fi

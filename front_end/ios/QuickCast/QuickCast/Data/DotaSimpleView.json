@@ -1,0 +1,24 @@
+[{
+"matchid": 2345310966,
+"sport": "DOTA2",
+"series": [0, 1, 3],
+"score": [7, 11],
+"teams": ["MILLENNIA", 1985173, "I Thought This Was TF2", 2797716],
+"duration": 1209.204712
+}, {
+"matchid": 2345340632,
+"sport": "DOTA2",
+"series": [0, 0, 3],
+"score": [0, 0],
+"teams": ["5Rungz", 2594272, "Get Mek'd", 2791131],
+"duration": 0
+}, {
+"matchid": 2345303500,
+"sport": "DOTA2",
+"series": [0, 0, 3],
+"score": [22, 21],
+"teams": ["Kook1e? Krow Klub", 2830827, "Tr14l & 3rr0r", 2037418],
+"duration": 1567.284302
+}]
+
+ /live
