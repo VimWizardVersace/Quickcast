@@ -49,11 +49,13 @@ router.get('/live', function(req, res, next){
 router.get('/live/:id', function(req, res, next){
 	Live.find(function(err, livegames){
 		if(err) return next(err);
-		for(var i=0; i<livegames[0].dotagames.length; i++){
-			if(livegames[0].dotagames[i].match_id==req.params.id){
-				res.json(livegames[0].dotagames[i]);
+		console.log(livegames[0].dotagames[0]);
+		for(var key in livegames[0].dotagames[0]){
+			if(livegames[0].dotagames[0][key].match_id==req.params.id){
+				res.json(livegames[0].dotagames[0][key]);
 			}
 		}
+		//res.json(req.params);
 	});
 })
 //Get heroes.txt from valve, and send it over.
