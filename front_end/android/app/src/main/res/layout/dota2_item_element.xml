@@ -9,10 +9,12 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Green"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_0_name"
-            android:text="nk"
+            android:text="unknown"
+            android:textColor="@color/Black"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_weight="0"
@@ -30,32 +32,32 @@
 
         <TextView
             android:id="@+id/r_player_0_item1"
-            android:background="@drawable/derp"
+            android:background="@drawable/quickcast"
             android:layout_height="36dp"
             android:layout_width="36dp"/>
         <TextView
             android:id="@+id/r_player_0_item2"
-            android:background="@drawable/derp"
+            android:background="@drawable/quickcast"
             android:layout_height="36dp"
             android:layout_width="36dp"/>
         <TextView
             android:id="@+id/r_player_0_item3"
-            android:background="@drawable/derp"
+            android:background="@drawable/quickcast"
             android:layout_height="36dp"
             android:layout_width="36dp"/>
         <TextView
             android:id="@+id/r_player_0_item4"
-            android:background="@drawable/derp"
+            android:background="@drawable/quickcast"
             android:layout_height="36dp"
             android:layout_width="36dp"/>
         <TextView
             android:id="@+id/r_player_0_item5"
-            android:background="@drawable/derp"
+            android:background="@drawable/quickcast"
             android:layout_height="36dp"
             android:layout_width="36dp"/>
         <TextView
             android:id="@+id/r_player_0_item6"
-            android:background="@drawable/derp"
+            android:background="@drawable/quickcast"
             android:layout_height="36dp"
             android:layout_width="36dp"
             android:gravity="right" /> </LinearLayout>
@@ -63,10 +65,12 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Green"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_1_name"
-            android:text="ELM59"
+            android:text="unknown"
+            android:textColor="@color/Black"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_weight="0"
@@ -83,32 +87,32 @@
 
             <TextView
                 android:id="@+id/r_player_1_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_1_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_1_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_1_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_1_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_1_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -116,10 +120,12 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Green"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_2_name"
-            android:text="AYY"
+            android:text="unknown"
+            android:textColor="@color/Black"
             android:gravity="center"
             android:layout_weight="0"
             android:layout_height="wrap_content"
@@ -136,32 +142,32 @@
 
             <TextView
                 android:id="@+id/r_player_2_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_2_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_2_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_2_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_2_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_2_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -169,10 +175,12 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Green"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_3_name"
-            android:text="nk"
+            android:text="unknown"
+            android:textColor="@color/Black"
             android:layout_weight="0"
             android:gravity="center"
             android:layout_height="wrap_content"
@@ -189,32 +197,32 @@
 
             <TextView
                 android:id="@+id/r_player_3_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_3_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_3_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_3_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_3_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_3_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -222,10 +230,12 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Green"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_4_name"
             android:text="Bret Favre"
+            android:textColor="@color/Black"
             android:gravity="center"
             android:layout_weight="0"
             android:layout_height="wrap_content"
@@ -242,32 +252,32 @@
 
             <TextView
                 android:id="@+id/r_player_4_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_4_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_4_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_4_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_4_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/r_player_4_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -297,10 +307,11 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Red"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_0_name"
-            android:text="nk"
+            android:text="unknown"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_weight="0"
@@ -318,32 +329,32 @@
 
             <TextView
                 android:id="@+id/d_player_0_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_0_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_0_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_0_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_0_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_0_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -351,10 +362,11 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Red"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_1_name"
-            android:text="I AM DE BES"
+            android:text="unknown"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_weight="0"
@@ -371,32 +383,32 @@
 
             <TextView
                 android:id="@+id/d_player_1_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_1_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_1_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_1_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_1_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_1_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -404,10 +416,11 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Red"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_2_name"
-            android:text="nk"
+            android:text="unknown"
             android:gravity="center"
             android:layout_weight="0"
             android:layout_height="wrap_content"
@@ -424,32 +437,32 @@
 
             <TextView
                 android:id="@+id/d_player_2_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_2_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_2_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_2_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_2_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_2_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -457,10 +470,11 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Red"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_3_name"
-            android:text="nk"
+            android:text="unknown"
             android:layout_weight="0"
             android:gravity="center"
             android:layout_height="wrap_content"
@@ -477,32 +491,32 @@
 
             <TextView
                 android:id="@+id/d_player_3_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_3_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_3_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_3_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_3_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_3_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>
@@ -510,10 +524,11 @@
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:background="@color/Red"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_4_name"
-            android:text="_"
+            android:text="EMP TRIFORCE"
             android:gravity="center"
             android:layout_weight="0"
             android:layout_height="wrap_content"
@@ -530,32 +545,32 @@
 
             <TextView
                 android:id="@+id/d_player_4_item1"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_4_item2"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_4_item3"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_4_item4"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_4_item5"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"/>
             <TextView
                 android:id="@+id/d_player_4_item6"
-                android:background="@drawable/derp"
+                android:background="@drawable/quickcast"
                 android:layout_height="36dp"
                 android:layout_width="36dp"
                 android:gravity="right" /> </LinearLayout>

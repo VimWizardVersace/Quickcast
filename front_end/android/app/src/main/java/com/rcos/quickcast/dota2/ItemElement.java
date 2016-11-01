@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rcos.quickcast.DrilldownElement;
@@ -28,6 +29,8 @@ public class ItemElement extends DrilldownElement {
     private String direName;
     private ArrayList<String> radiantPlayers;
     private ArrayList<String> direPlayers;
+    private ArrayList<String> radiantItems;
+    private ArrayList<String> direItems;
 
     public ItemElement(JSONObject details) throws JSONException {
         mSport = "DOTA2";
@@ -36,26 +39,31 @@ public class ItemElement extends DrilldownElement {
 
         radiantPlayers = new ArrayList<>();
         direPlayers = new ArrayList<>();
+        radiantItems = new ArrayList<>();
+        direItems = new ArrayList<>();
 
         //we're guaranteed to have 10 players with id 0 or 1, so we do this:
         int j = 0;
         for (int i = 0; i < 10; i++) {
             while (j > -1) {
                 JSONObject player = (JSONObject) players.get(j);
+                //JSONObject itemset = (JSONObject) items.get(j);
                 if (player.getInt("team") == 0) {
                     Log.d("QUICKCAST!!!!", "found a player " + j + player.getString("name"));
                     radiantPlayers.add(player.getString("name"));
+                    //add in item images to radiantItems
                     break;
                 } else if (player.getInt("team") == 1) {
                     Log.d("QUICKCAST!!!!", "found a player " + j + player.getString("name"));
                     direPlayers.add(player.getString("name"));
+                    //add in item images to direItems
                     break;
                 }
                 j++;
             }
             j++;
         }
-        Log.d("QUICKCAST!!!!", "constructed team element");
+        Log.d("QUICKCAST!!!!", "constructed item element");
     }
 
     public View getView(Context context, ViewGroup parent) {
@@ -82,6 +90,12 @@ public class ItemElement extends DrilldownElement {
         dPlayer = (TextView) element.findViewById(R.id.d_player_4_name);
         rPlayer.setText(radiantPlayers.get(4));
         dPlayer.setText(direPlayers.get(4));
+
+        /*TextView item = (TextView) element.findViewById(R.id.r_player_0_item1);
+        item.setBackground(picture 1 for guy 1);
+        item = (TextView) element.findViewById(R.id.r_player_0_item2);
+        item.setBackground(picture 2 for guy 2);*/
+        //etc
 
         return element;
     }
