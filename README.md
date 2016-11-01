@@ -11,4 +11,7 @@ Our current goal is to reach functionality for DOTA 2 while keeping our server a
 - Json
 - Android Studio
 
-Our RCOS blog is located at http://rcos.io/projects/Farkinator/QuickCast/blog
+Our RCOS blog is located at https://rcos.io/projects/roastmaster/QuickCast/blog
+
+github repo for iOS version: https://github.com/ethanrcos/Quickcast_ios
+
