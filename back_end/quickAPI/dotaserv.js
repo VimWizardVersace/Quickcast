@@ -28,7 +28,9 @@ updateDB = function(response) {
 		string+=chunk;
 		// console.log(chunk);
 	});
-
+	/*response.on('error', (e) => {
+		console.log('problem with request: ${e.message}');
+	});*/
 	//Now we can send the data to the database. Good stuff, man!
 	response.on('end', function(){
 		data = JSON.parse(string);
@@ -71,6 +73,7 @@ updateDB = function(response) {
 		collection.update({}, {$set : {dotagames: update_with}}, function(err, doc){
 			if(err){
 				console.log("Woah there! error!");
+				console.log(err);
 			} else {
 				//console.log(update_with);
 				//console.log("Updated succesfully");
@@ -81,9 +84,14 @@ updateDB = function(response) {
 
 
 	});
+	
 }
 function getData(){
-	http.request(options, updateDB).end();
+	var req = http.request(options, updateDB);
+	req.on('error', (e) => {
+		console.log('Got error: ' + e.message);
+	});
+	req.end();
 
 }
 
