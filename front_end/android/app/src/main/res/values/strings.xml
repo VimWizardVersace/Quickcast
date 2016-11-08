@@ -21,7 +21,7 @@
     <string name="action_settings">Settings</string>
     <string name="no_recent_matches">No Recent Matches</string>
 
-    <string name="default_server">http://quickcast.farkinator.c9users.io</string>
+    <string name="default_server">http://104.131.81.199:3000</string>
 
     <string name="spoofed_data">{ \"abcdefg\" : { \"start time\" : -1, \"sport\" : "DOTA2", \"teams\" : [ \"Evil Geniuses\", \"111111\", \"The Losers\", \"222222\"], \"score\" : [99, 0], \"series\" : [ 1, 0, 3]}, \"abcdefh\" : { \"start time\" : 1457477550, \"sport\" : \"DOTA2\", \"teams\" : [ \"Evil Geniuses\", \"111111\", \"The Losers\", \"222222\"], \"score\" : [10, 10],\"series\" : [ 1, 0, 3]}, \"abcdefi\" : { \"start time\" : -1, \"sport\" : \"DOTA2\", \"teams\" : [ \"Evil Geniuses\", \"111111\", \"The Losers\", \"222222\"], \"score\" : [0, 99],\"series\" : [ 1, 1, 5]}, \"abcdefj\" : { \"start time\" : -1, \"sport\" : \"DOTA2\", \"teams\" : [ \"Evil Geniuses\", \"111111\", \"The Losers\", \"222222\"], \"score\" : [0, 0],\"series\" : [ 1, 0, 3]}}</string>
 </resources>
