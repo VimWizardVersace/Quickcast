@@ -2,5 +2,8 @@
 <resources>
     <color name="Green">#00b000</color>
     <color name="Red">#b00000</color>
+    <color name="Black">#000000</color>
+    <color name="White">#ffffff</color>
+    <color name="Pink">#ff69b4</color>
     <color name="AppForeground">#92bbea</color>
 </resources>
