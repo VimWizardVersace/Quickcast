@@ -21,7 +21,9 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.rcos.quickcast.dota2.ItemElement;
 import com.rcos.quickcast.dota2.KDAElement;
+import com.rcos.quickcast.dota2.PickBanElement;
 import com.rcos.quickcast.dota2.TeamElement;
 
 import org.json.JSONException;
@@ -125,6 +127,8 @@ public class DrilldownSwipeFragment extends ListFragment {
                 Log.d("QUICKCAST!!!!", "making dota list");
                 mElements.add(new TeamElement(mJSONData));
 				mElements.add(new KDAElement(mJSONData));
+                mElements.add(new ItemElement(mJSONData));
+                mElements.add(new PickBanElement(mJSONData));
                 break;
             default:
         }

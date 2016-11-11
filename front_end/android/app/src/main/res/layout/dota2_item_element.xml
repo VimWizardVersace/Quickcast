@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:paddingTop="8dp">
-
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dota_radiant_back">
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -288,22 +289,12 @@
 
 
 
+</TableLayout>
 
-
-    <TableRow
-        android:layout_height="wrap_content"
+    <TableLayout
         android:layout_width="match_parent"
-        android:gravity="center_horizontal">
-        <TextView
-            android:id="@+id/tableDire"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-
-            android:layout_gravity="center_horizontal"/>
-
-    </TableRow>
+        android:layout_height="wrap_content"
+        android:background="@color/dota_dire_back">
     <TableRow
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -576,3 +567,4 @@
                 android:gravity="right" /> </LinearLayout>
     </TableRow>
 </TableLayout>
+</LinearLayout>

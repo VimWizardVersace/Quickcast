@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/Green">
+        android:background="@color/dota_radiant">
 
         <ImageView
             android:layout_width="match_parent"
@@ -37,73 +37,197 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
-<TableLayout
-    android:layout_width="wrap_content"
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:shrinkColumns="*"
-    android:stretchColumns="*"
-    android:gravity="center">
-    <TableRow
+    android:background="@color/dota_radiant_back">
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_0_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/r_player_0_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/r_player_0_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/r_player_0_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/r_player_0_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/r_player_0_hero"
+            android:layout_alignRight="@id/r_player_0_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/r_player_0_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/r_player_0_hero"
+            android:layout_alignBottom="@id/r_player_0_hero"
+            android:layout_below="@id/r_player_0_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_1_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/r_player_1_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/r_player_1_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/r_player_1_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/r_player_1_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/r_player_1_hero"
+            android:layout_alignRight="@id/r_player_1_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/r_player_1_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/r_player_1_hero"
+            android:layout_alignBottom="@id/r_player_1_hero"
+            android:layout_below="@id/r_player_1_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_2_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/r_player_2_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/r_player_2_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/r_player_2_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/r_player_2_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/r_player_2_hero"
+            android:layout_alignRight="@id/r_player_2_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/r_player_2_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/r_player_2_hero"
+            android:layout_alignBottom="@id/r_player_2_hero"
+            android:layout_below="@id/r_player_2_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_3_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/r_player_3_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/r_player_3_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/r_player_3_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/r_player_3_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/r_player_3_hero"
+            android:layout_alignRight="@id/r_player_3_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/r_player_3_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/r_player_3_hero"
+            android:layout_alignBottom="@id/r_player_3_hero"
+            android:layout_below="@id/r_player_3_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/r_player_4_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/r_player_4_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    </TableLayout>
+            android:id="@+id/r_player_4_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/r_player_4_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/r_player_4_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/r_player_4_hero"
+            android:layout_alignRight="@id/r_player_4_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/r_player_4_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/r_player_4_hero"
+            android:layout_alignBottom="@id/r_player_4_hero"
+            android:layout_below="@id/r_player_4_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Red">
+        android:background="@color/dota_dire">
 
         <ImageView
             android:layout_width="match_parent"
@@ -131,71 +255,191 @@
             android:paddingBottom="8dp" />
     </RelativeLayout>
 
-    <TableLayout
-        android:layout_width="fill_parent"
+    
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dota_dire_back">
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:shrinkColumns="*"
-        android:stretchColumns="*">
-    <TableRow
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_0_name"
             android:text="unknown"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/d_player_0_hero"
-			android:text="Abadon"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/d_player_0_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/d_player_0_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/d_player_0_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/d_player_0_hero"
+            android:layout_alignRight="@id/d_player_0_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/d_player_0_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/d_player_0_hero"
+            android:layout_alignBottom="@id/d_player_0_hero"
+            android:layout_below="@id/d_player_0_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_1_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/d_player_1_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/d_player_1_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/d_player_1_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/d_player_1_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/d_player_1_hero"
+            android:layout_alignRight="@id/d_player_1_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/d_player_1_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/d_player_1_hero"
+            android:layout_alignBottom="@id/d_player_1_hero"
+            android:layout_below="@id/d_player_1_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_2_name"
             android:text="unknown"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/d_player_2_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/d_player_2_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/d_player_2_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/d_player_2_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/d_player_2_hero"
+            android:layout_alignRight="@id/d_player_2_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/d_player_2_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/d_player_2_hero"
+            android:layout_alignBottom="@id/d_player_2_hero"
+            android:layout_below="@id/d_player_2_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_3_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/d_player_3_hero"
-			android:text="Abadon"/>
-    </TableRow>
-    <TableRow
+            android:id="@+id/d_player_3_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/d_player_3_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/d_player_3_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/d_player_3_hero"
+            android:layout_alignRight="@id/d_player_3_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/d_player_3_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/d_player_3_hero"
+            android:layout_alignBottom="@id/d_player_3_hero"
+            android:layout_below="@id/d_player_3_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/d_player_4_name"
-            android:text="unknown"/>
+            android:text="unknown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true" />
+
         <TextView
-			android:id="@+id/d_player_4_hero"
-			android:text="Abadon"/>
-    </TableRow>
-</TableLayout>
+            android:id="@+id/d_player_4_hero"
+            android:text="Abadon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignBottom="@+id/d_player_4_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/d_player_4_name"
+            />
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/d_player_4_hero"
+            android:layout_alignRight="@id/d_player_4_hero"
+            android:src="@drawable/quickcast"
+            android:id="@+id/d_player_4_hImage"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/d_player_4_hero"
+            android:layout_alignBottom="@id/d_player_4_hero"
+            android:layout_below="@id/d_player_4_hero"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

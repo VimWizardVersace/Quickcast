@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dota_radiant">#00b000</color>
+    <color name="dota_dire">#b00000</color>
+    <color name="dota_radiant_back">#003000</color>
+    <color name="dota_dire_back">#300000</color>
+    <color name="dota_radiant_high">#a3faa3</color>
+    <color name="dota_dire_high">#faa3a3</color>
+</resources>
